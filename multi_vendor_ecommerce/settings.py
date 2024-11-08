@@ -37,6 +37,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'account',
+    'store',
+    'dashboard',
+
 ]
 
 MIDDLEWARE = [
@@ -122,5 +127,10 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-AUTH_USER_MODEL = "accounts.CustomUser"
+AUTH_USER_MODEL = "account.CustomUser"
 AUTHENTICATION_BACKENDS = ['account.backends.EmailBackend']
+
+MEDIA_URL = 'uploads/'
+MEDIA_ROOT = [
+    BASE_DIR / "uploads",
+    ]
