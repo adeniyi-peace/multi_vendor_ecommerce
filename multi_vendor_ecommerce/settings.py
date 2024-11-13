@@ -59,7 +59,9 @@ ROOT_URLCONF = 'multi_vendor_ecommerce.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            BASE_DIR/"templates",
+                 ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -134,3 +136,7 @@ MEDIA_URL = 'uploads/'
 MEDIA_ROOT = [
     BASE_DIR / "uploads",
     ]
+
+STATICFILES_DIRS = [
+    BASE_DIR/"static",
+]

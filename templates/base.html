@@ -1,0 +1,50 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Better Life{% endblock title %}</title>
+    <link rel="stylesheet" href="{% static "style.css" %}">
+    {% block styles %}{% endblock styles %}
+</head>
+<body>
+    <header>
+        <div id="company-logo">
+            <h2>Better Life</h2>
+        </div>
+
+        <!-- Menu goes here later -->
+        <div id="menu">
+            <!-- To be done -->
+        </div>
+
+        <div id="search">
+            <form action="" method="get">
+                <input type="search" name="q" id="q" placeholder="What can we help you find today?">
+                <button type="submit">Search</button>
+            </form>
+        </div>
+        <nav>
+            <a href="">Account</a>
+            <a href="">Cart</a>
+        </nav>
+    </header>
+    {% block contents %}
+    
+    {% endblock contents %}
+
+    <footer>
+        <div id="support">
+            <h3>Support and Service</h3>
+            <a href="">Contact Me</a>
+        </div>
+
+        <div id="about">
+            <h3>About Better Life</h3>
+            <a href="">about us</a>
+        </div>
+    </footer>
+</body>
+</html>

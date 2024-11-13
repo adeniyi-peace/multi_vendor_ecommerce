@@ -6,7 +6,7 @@ from django.views import View
 # Create your views here.
 
 def homepage(request):
-    return HttpResponse("welcome to the future")
+    return render(request, "store/homepage.html")
 
 
 class CategoryView(View):

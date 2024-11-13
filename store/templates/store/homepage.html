@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block styles %} <link rel="stylesheet" href="{% static "store/homepage.css" %}"> {% endblock styles %}
+
+{% block contents %}
+    <!-- position for ads and promotion carosel -->
+    <div id="ads-carosel">
+
+    </div>
+
+
+    <div id="latest-product">
+        <ul>
+            {% include "store/includes/product_list.html" %}
+            {% include "store/includes/product_list.html" %}
+            {% include "store/includes/product_list.html" %}
+            {% include "store/includes/product_list.html" %}
+            {% include "store/includes/product_list.html" %}
+        </ul>
+        
+    </div>
+
+
+    <!--  randomily show product category from database -->
+    {% for a in things  %}
+    <div>
+
+    </div>
+      
+    {% endfor %}
+
+     <div id="recent-search">
+        <ul>
+            {% include "store/includes/product_list.html" %}
+            {% include "store/includes/product_list.html" %}
+            {% include "store/includes/product_list.html" %}
+            {% include "store/includes/product_list.html" %}
+            {% include "store/includes/product_list.html" %}
+        </ul>
+     </div>
+{% endblock contents %}

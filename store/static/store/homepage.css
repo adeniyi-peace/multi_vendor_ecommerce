@@ -1,0 +1,12 @@
+
+ul{
+    list-style: none;
+    display: flex;
+}
+
+li{
+    padding: 1rem;
+    border: solid 1px black;
+    margin-right: 2rem;
+    border-radius: 12px;
+}
