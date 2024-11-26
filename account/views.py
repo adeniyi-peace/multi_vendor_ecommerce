@@ -14,17 +14,17 @@ class RegisterUserView(View):
     def get(self, request):
         form = CreateUserForm()
         context = {"form":form}
-        return HttpResponse("signup")
+        return render(request, "account/register.html", context)
     
     def post(self, request):
-        form = CreateUserForm(request, request.POST)
+        form = CreateUserForm( request.POST)
 
         if form.is_valid():
             form.save()
-            # return redirect("login")
+            return redirect("login")
         
         context = {"form":form}
-        return HttpResponse("signup")
+        return render(request, "account/register.html", context)
     
 
 # ~ login users
@@ -32,7 +32,7 @@ class LoginView(View):
     def get(self, request):
         form = UserLoginForm
         context = {"form":form}
-        return HttpResponse("login")
+        return render(request, "account/login.html", context)
     
     def post(self, request):
         form = UserLoginForm(request, request.POST)
@@ -45,12 +45,13 @@ class LoginView(View):
 
             if user:
                 login(request, user)
-                # return redirect("homepage")
+                return redirect("homepage")
 
             
         
         context = {"form":form}
-        return HttpResponse("signup")
+        print(form)
+        return render(request, "account/login.html", context)
     
 
 # ~ logout users

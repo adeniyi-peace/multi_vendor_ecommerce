@@ -1,10 +1,14 @@
-
+{% for product in products  %}
 
     <li> 
-        <a href=""> 
-            <img src="" alt="testing">
-            <h3><strong>title</strong></h3>
-            <p>price</p>
+        <a href="{% url "product_detail" product.slug %}"> 
+            {% for pics in product.image.all %}
+            <img src="{{pics.image.url}}" alt="testing">
+            {% endfor %}
+            <h3><strong>{{product.name}}</strong></h3>
+            <p>₦ {{product.price|floatformat:"2g"}}</p>
             <p>ratings</p>
         </a>
     </li>
+
+    {% endfor %}

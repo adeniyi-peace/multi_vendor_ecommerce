@@ -1,0 +1,114 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Product Detail Page for a Multi-Vendor Ecommerce Website">
+    <meta name="author" content="Your Name">
+    <title>Product Detail | Multi-Vendor Ecommerce</title>
+    {% block "styles" %}<link rel="stylesheet" href="{%static "store/product_detail.css" %}">{% endblock %}
+</head>
+<body>
+    <header>
+        <nav>
+            <!-- Navigation Bar (You can add links to other pages like Home, Cart, Profile, etc.) -->
+            <div class="logo">E-Commerce</div>
+            <div class="menu">
+                <a href="#">Home</a>
+                <a href="#">Shop</a>
+                <a href="#">Cart</a>
+                <a href="#">Profile</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="product-detail-page">
+        <!-- Product Info Section -->
+        <section class="product-info">
+            {% comment %} <div class="product-images">
+                {% for pics in product.image.all %}
+                    <img src="{{pics.image.url}}" alt="testing">
+                    {% endfor %}
+                <div class="thumbnails">
+                    
+                    <img src="thumb1.jpg" alt="Product Thumbnail 1" class="thumbnail" data-img="thumb1.jpg">
+                    <img src="thumb2.jpg" alt="Product Thumbnail 2" class="thumbnail" data-img="thumb2.jpg">
+                    <img src="thumb3.jpg" alt="Product Thumbnail 3" class="thumbnail" data-img="thumb3.jpg">
+                </div>
+            </div> {% endcomment %}
+
+            <div class="product-images">
+                <div class="carousel-container">
+                    <!-- Carousel Images -->
+                    <div class="carousel">
+                        {% for pics in product.image.all %}
+                        <img src="{{pics.image.url}}" alt="testing" class="carousel-item">
+                        {% endfor %}
+                    </div>
+            
+                    <!-- Carousel Navigation Arrows -->
+                    <button class="carousel-prev" onclick="moveCarousel(-1)">&#10094;</button>
+                    <button class="carousel-next" onclick="moveCarousel(1)">&#10095;</button>
+                </div>
+            </div>
+
+            <div class="product-details">
+                <h1>{{product.name}}</h1>
+                <p class="vendor">Sold by: <span id="vendor-name">Vendor Name</span></p>
+                <div class="price">
+                    <span class="price-value" id="product-price">₦{{product.price|floatformat:"2g"}}</span>
+                    <span class="discount">-15% OFF</span>
+                </div>
+
+                <div class="product-variants">
+                    <label for="color">Color:</label>
+                    <select id="color" class="variant-selector">
+                        <option value="red">Red</option>
+                        <option value="blue">Blue</option>
+                        <option value="green">Green</option>
+                    </select>
+                    <label for="size">Size:</label>
+                    <select id="size" class="variant-selector">
+                        <option value="S">S</option>
+                        <option value="M">M</option>
+                        <option value="L">L</option>
+                    </select>
+                </div>
+
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+        </section>
+
+        <!-- Product Description -->
+        <section class="product-description">
+            <h2>Description</h2>
+            {{product.description}}
+        </section>
+
+        <!-- Reviews Section -->
+        <section class="reviews-section">
+            <h2>Customer Reviews</h2>
+            <div class="review">
+                <div class="review-header">
+                    <span class="review-author">John Doe</span>
+                    <span class="review-rating">★★★★☆</span>
+                </div>
+                <p class="review-text">This product is amazing! It exceeded my expectations in terms of quality and value.</p>
+            </div>
+
+            <div class="review-form">
+                <textarea placeholder="Write your review..." rows="4"></textarea>
+                <button class="submit-review">Submit Review</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 E-Commerce Company. All Rights Reserved.</p>
+    </footer>
+
+    <script src="{% static "store/product_detail.js" %}"></script>
+</body>
+</html>

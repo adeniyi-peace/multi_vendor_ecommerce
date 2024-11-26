@@ -1,12 +1,144 @@
-
-ul{
-    list-style: none;
-    display: flex;
+/* Hero Section */
+.hero {
+    /* background: url('hero-bg.jpg') no-repeat center center/cover; */
+    background-color: aquamarine;
+    color: white;
+    text-align: center;
+    padding: 100px 0;
 }
 
-li{
-    padding: 1rem;
-    border: solid 1px black;
-    margin-right: 2rem;
-    border-radius: 12px;
+.hero .btn-primary {
+    background-color: #f1a8a1;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
+
+/* Categories Section */
+.categories {
+    background-color: white;
+    padding: 40px 0;
+}
+.categories h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+.category-list {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+.category-item {
+    text-align: center;
+    flex: 1;
+}
+.category-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+/* Featured Products Section */
+.featured-products {
+    padding: 40px 0;
+    background-color: #f9f9f9;
+}
+
+.featured-products h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.carousel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.carousel-container {
+    display: flex;
+    gap: 20px; /* Adjust the gap between products */
+    transition: transform 0.3s ease; /* Smooth transition when moving */
+}
+
+.carousel-item {
+    flex: 0 0 20%; /* Adjust this value to show more or fewer items */
+    text-align: center;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.carousel-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.featured-products button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+    color: #333;
+    padding: 10px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.prev-btn {
+    left: 0;
+}
+
+.next-btn {
+    right: 0;
+}
+
+button:hover {
+    color: #f1a8a1;
+}
+
+/* Make carousel responsive: show more items on larger screens */
+@media screen and (max-width: 768px) {
+    .carousel-item {
+        flex: 0 0 45%; /* Show 2 items on smaller screens */
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .carousel-item {
+        flex: 0 0 90%; /* Show 1 item on extra small screens */
+    }
+}
+
+
+/* Vendors Section */
+.vendors {
+    background-color: white;
+    padding: 40px 0;
+}
+.vendors h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+.vendor-list {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+.vendor-item {
+    text-align: center;
+    flex: 1;
+}
+.vendor-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
 }

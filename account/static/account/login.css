@@ -1,0 +1,44 @@
+
+
+#login-area{
+    padding: 1rem;
+    width:30%;
+    border-radius: 4px;
+    margin: 2rem auto;
+    background-color: whitesmoke;
+    box-shadow: 0 4px 8px grey;
+}
+
+#login-area h3 {
+    text-align: center;
+}
+
+#login-area ul{
+    list-style: none;
+    color: rgb(252, 129, 129);
+    display: inline-block;
+    padding: 0;
+}
+
+
+.form-control label,
+.form-control input{
+    display: block;
+}
+
+.form-control label{
+    margin-top: 1rem
+}
+
+.form-control input{
+    width: 100%;
+    height: 20px;
+}
+
+.form-control button{
+    margin: auto auto;
+}
+
+#other{
+    text-align: center;
+}

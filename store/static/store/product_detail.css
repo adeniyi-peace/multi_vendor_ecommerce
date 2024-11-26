@@ -1,0 +1,241 @@
+/* Basic Reset and Layout */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f8f8;
+    color: #333;
+}
+
+header {
+    background-color: #000;
+    color: #fff;
+    padding: 15px;
+}
+
+nav .logo {
+    font-size: 24px;
+    font-weight: bold;
+    display: inline-block;
+}
+
+nav .menu {
+    float: right;
+    display: inline-block;
+    padding: 0;
+}
+
+nav .menu a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px;
+    font-size: 18px;
+    margin-left: 20px;
+}
+
+.product-detail-page {
+    display: block;
+    flex-direction: row;
+    margin: 20px;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* .product-images {
+    flex: 1;
+    padding: 10px;
+}
+
+.product-images img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.thumbnails {
+    margin-top: 10px;
+    display: flex;
+    gap: 10px;
+}
+
+.thumbnail {
+    width: 50px;
+    cursor: pointer;
+    border-radius: 5px;
+} */
+
+/* Product Image Carousel Styles */
+.product-images {
+    position: relative;
+    width: 100%;
+    max-width: 600px; /* Adjust to the desired width */
+    margin: 0 auto;
+    overflow: hidden; /* Hide images that go beyond the visible area */
+}
+
+.carousel-container {
+    position: relative;
+}
+
+.carousel {
+    display: flex;
+    transition: transform 0.5s ease-in-out; /* Smooth sliding effect */
+}
+
+.carousel-item {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    flex-shrink: 0; /* Prevent images from shrinking */
+}
+
+.carousel-prev, .carousel-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    font-size: 24px;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.carousel-prev {
+    left: 10px;
+}
+
+.carousel-next {
+    right: 10px;
+}
+
+.carousel-prev:hover, .carousel-next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+
+/*  */
+
+.product-details {
+    flex: 1;
+    padding-left: 30px;
+}
+
+.product-details h1 {
+    font-size: 28px;
+    font-weight: bold;
+    color: #000;
+}
+
+.product-details .vendor {
+    font-size: 16px;
+    margin: 10px 0;
+    color: #888;
+}
+
+.price {
+    font-size: 22px;
+    font-weight: bold;
+    margin: 20px 0;
+}
+
+.discount {
+    color: #e74c3c;
+    font-size: 18px;
+}
+
+.variant-selector {
+    padding: 10px;
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+.add-to-cart {
+    background-color: #27ae60;
+    color: #fff;
+    padding: 15px;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s ease;
+}
+
+.add-to-cart:hover {
+    background-color: #2ecc71;
+}
+
+.product-description {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #f1f1f1;
+    border-radius: 8px;
+}
+
+.reviews-section {
+    margin-top: 30px;
+    padding: 20px;
+}
+
+.review {
+    margin-bottom: 20px;
+}
+
+.review-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+
+.review-author {
+    font-weight: bold;
+}
+
+.review-rating {
+    color: #f39c12;
+}
+
+.review-text {
+    font-size: 16px;
+}
+
+.review-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.review-form textarea {
+    padding: 15px;
+    font-size: 16px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.submit-review {
+    background-color: #3498db;
+    color: #fff;
+    padding: 12px;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit-review:hover {
+    background-color: #2980b9;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #333;
+    color: #fff;
+}

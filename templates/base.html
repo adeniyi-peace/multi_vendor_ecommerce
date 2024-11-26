@@ -6,45 +6,69 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Better Life{% endblock title %}</title>
-    <link rel="stylesheet" href="{% static "style.css" %}">
+    <link rel="stylesheet" href="{% static "css/style.css" %}">
     {% block styles %}{% endblock styles %}
 </head>
 <body>
+
+    <!-- Sidebar Menu (Hidden by default) -->
+    <div id="sideNav" class="sidebar">
+        <button id="closeBtn" class="close-btn">&times;</button>
+        <h3>Categories</h3>
+        <ul class="category-list">
+            <li><a href="#">Electronics</a></li>
+            <li><a href="#">Fashion</a></li>
+            <li><a href="#">Home & Kitchen</a></li>
+            <li><a href="#">Beauty</a></li>
+            <li><a href="#">Sports</a></li>
+            <li><a href="#">Books</a></li>
+        </ul>
+    </div>
+
+    <!-- Header Section -->
     <header>
-        <div id="company-logo">
-            <h2>Better Life</h2>
-        </div>
+        <div class="container">
+            <div class="logo">
+                <h1><a href="#">Better Life</a></h1>
+            </div>
 
-        <!-- Menu goes here later -->
-        <div id="menu">
-            <!-- To be done -->
-        </div>
+            <div class="search">
+                <form action="" method="get">
+                    <input type="search" name="q" id="q" placeholder="What can we help you find today?">
+                    <button type="submit">Search</button>
+                </form>
+            </div>
 
-        <div id="search">
-            <form action="" method="get">
-                <input type="search" name="q" id="q" placeholder="What can we help you find today?">
-                <button type="submit">Search</button>
-            </form>
+            <nav>
+                <ul>
+                    <li><a href="#" id="menuIcon" >&#9776;</a></li>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Shop</a></li>
+                    <li><a href="#">Vendors</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Cart (0)</a></li>
+                    <li><a href="#">Login</a></li>
+                </ul>
+            </nav>
+            
         </div>
-        <nav>
-            <a href="">Account</a>
-            <a href="">Cart</a>
-        </nav>
     </header>
+    
+
     {% block contents %}
     
     {% endblock contents %}
 
-    <footer>
-        <div id="support">
-            <h3>Support and Service</h3>
-            <a href="">Contact Me</a>
-        </div>
+    <script src="{% static "js/app.js" %}"></script>
 
-        <div id="about">
-            <h3>About Better Life</h3>
-            <a href="">about us</a>
-        </div>
+    <footer>
+        <p>&copy; 2024 MultiVendorShop. All rights reserved.</p>
+            <ul>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms of Service</a></li>
+                <li><a href="#">Contact Us</a></li>
+            </ul>
+        
     </footer>
 </body>
 </html>

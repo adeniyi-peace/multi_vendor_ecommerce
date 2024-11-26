@@ -133,10 +133,13 @@ AUTH_USER_MODEL = "account.CustomUser"
 AUTHENTICATION_BACKENDS = ['account.backends.EmailBackend']
 
 MEDIA_URL = 'uploads/'
-MEDIA_ROOT = [
-    BASE_DIR / "uploads",
-    ]
+MEDIA_ROOT = BASE_DIR / "uploads"
+
 
 STATICFILES_DIRS = [
     BASE_DIR/"static",
 ]
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap4"
+
+CRISPY_TEMPLATE_PACK = "bootstrap4"
