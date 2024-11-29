@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block styles %} <link rel="stylesheet" href="{% static "account/login.css" %}"> {% endblock styles %}
+{% block styles %} <link rel="stylesheet" href="{% static "account/login.css" %}">{% endblock styles %}
 
 {% block contents %}
 <div id="login-area">
@@ -12,9 +12,6 @@
 
     <form action="" method="post" autocomplete="off">
         {% csrf_token %}
-        <div class="nf-error">
-        {{form.non_field_errors}}
-        </div>
         {% for form in form  %}
         <div class="form-control">
             {{form.label_tag}}
@@ -24,19 +21,12 @@
         {% endfor %}
         <br>
         <div id="button">
-        <button type="submit">Login</button>
+        <button type="submit">Become a Vendor</button>
         </div>
     </form>
 
-    <br>
-    <hr>
-    <br>
-    <div id="other">
-        <p>Dont have an account</p>
-        <br>
-        <a  href="{% url 'register' %}">Register </a>
-
-    </div>
+    
 </div>
 
-{% endblock %}
+{% endblock contents %}
+

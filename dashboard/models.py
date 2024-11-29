@@ -6,11 +6,18 @@ from account.models import CustomUser
 
 # Create your models here.
 
-class Profile(models.Model):
+class Vendor(models.Model):
     user = models.OneToOneField("account.CustomUser", on_delete=models.CASCADE, related_name="profile")
-    profile_picture = models.ImageField(upload_to="uploads/profile picture", height_field=None, width_field=None, max_length=None, )
+    logo = models.ImageField(upload_to="profile picture", height_field=None, width_field=None, max_length=None, blank=True)
+    vendor_name = models.CharField(max_length=100, unique=True)
     number = models.CharField(max_length=50)
-    is_vendor = models.BooleanField(editable=False, default=False)
+    street = models.CharField(max_length=50)
+    city = models.CharField(max_length=50)
+    state = models.CharField(max_length=15)
+    country = models.CharField(max_length=20)
+
+    def __str__(self):
+        return self.vendor_name
 
 class Address(models.Model):
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)

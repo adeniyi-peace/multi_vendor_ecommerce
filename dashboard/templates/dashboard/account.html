@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block styles %} <link rel="stylesheet" href="{% static "dashboard/account.css" %}"> {% endblock styles %}
+
+{% block contents %}
+<div class="user-detail">
+    <h3>Welcome to your one shop experience {{user.username}}</h3>
+</div>
+
+<div class="details-table">
+    <table>
+        <tr>
+            <td>Profile</td>
+            <td>My Order</td>
+        </tr>
+        <tr>
+            <td>My Address</td>
+            <td>My Saved Items</td>
+        </tr>
+    </table>
+</div>
+
+{{user.is_vendor}}
+
+<div class="join-vendor">
+    <h3>Want to sell on Better buy, become a vendor today</h3>
+    <a href="{% url "vendor_register" %}">Vendor</a>
+</div>
+<div class="recently-viewed">
+    <h2>Recently Viewed</h2>
+    <div class="carousel">
+        <button class="prev-btn">❮</button>
+        <div class="carousel-container">
+            <div class="carousel-item">
+                <a href=""> 
+                    <img src="{{product.image.all.0.image.url}}" alt="testing">
+                    <h3>Product 1</h3>
+                    <p>₦{{product.price|floatformat:"2g"}}</p>
+                </a>
+            </div>
+            <div class="carousel-item">
+                <img src="product2.jpg" alt="Product 2">
+                <h3>Product 2</h3>
+                <p>$129.99</p>
+            </div>
+            <div class="carousel-item">
+                <img src="product3.jpg" alt="Product 3">
+                <h3>Product 3</h3>
+                <p>$149.99</p>
+            </div>
+            <div class="carousel-item">
+                <img src="product3.jpg" alt="Product 3">
+                <h3>Product 3</h3>
+                <p>$149.99</p>
+            </div>
+            <div class="carousel-item">
+                <img src="product3.jpg" alt="Product 3">
+                <h3>Product 3</h3>
+                <p>$149.99</p>
+            </div>
+            <div class="carousel-item">
+                <img src="product3.jpg" alt="Product 3">
+                <h3>Product 3</h3>
+                <p>$149.99</p>
+            </div>
+            <!-- More items here -->
+             
+        </div>
+        <button class="next-btn">❯</button>
+    </div>
+</div>
+
+<script src="{% static "dashboard/account.js" %}"></script>
+{% endblock contents %}

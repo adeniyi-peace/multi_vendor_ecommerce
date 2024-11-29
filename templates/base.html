@@ -42,12 +42,16 @@
             <nav>
                 <ul>
                     <li><a href="#" id="menuIcon" >&#9776;</a></li>
-                    <li><a href="#">Home</a></li>
+                    <li><a href="{% url 'homepage' %}">Home</a></li>
                     <li><a href="#">Shop</a></li>
                     <li><a href="#">Vendors</a></li>
                     <li><a href="#">Contact</a></li>
                     <li><a href="#">Cart (0)</a></li>
-                    <li><a href="#">Login</a></li>
+                    {% if user.is_authenticated %}
+                    <li><a href="{% url 'logout' %}">logout</a></li>
+                    {% else %}
+                    <li><a href="{% url 'login' %}">Login</a></li>
+                    {% endif %}
                 </ul>
             </nav>
             
@@ -72,3 +76,4 @@
     </footer>
 </body>
 </html>
+
