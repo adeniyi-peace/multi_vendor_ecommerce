@@ -1,0 +1,78 @@
+.add{
+    margin: 2rem auto;
+    border: 2px solid black;
+    width: 90%;
+    border-radius: 12px;
+}
+
+.add h3,
+.add h6{
+    text-align: center;
+}
+
+.add h3{
+    font-size: 2rem;
+}
+
+.add h6{
+    font-size: 1rem;
+    font-weight: normal;
+}
+
+.add form{
+    padding: 0 2rem;
+}
+
+.form-control label,
+.form-control input,
+.form-control textarea{
+    display: block;
+}
+
+.form-control input,
+.form-control textarea{
+    font-size: 1rem;
+    font-family:'Arial';
+}
+
+.form-control{
+    margin-bottom: 1rem;
+}
+
+.form-control textarea{
+    width: 90%;
+}
+
+.add form button{
+    margin-bottom: 1rem;
+    padding: .5rem;
+    background-color: #575757;
+    border-radius: 4px;
+    color: white;
+    position: relative;
+    left: 20%;
+}
+
+.add form button:hover,
+.add form button:active{
+    background-color: #6b6b6b;
+    color: wheat;
+    cursor: pointer;
+}
+
+.add form .edit-button{
+    margin-bottom: 1rem;
+    padding: .5rem;
+    background-color: #086d10;
+    border-radius: 4px;
+    color: white;
+    position: relative;
+    left: 20%;
+}
+
+.add form button:hover,
+.add form button:active{
+    background-color: #13a720;
+    color: white;
+    cursor: pointer;
+}

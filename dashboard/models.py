@@ -20,7 +20,7 @@ class Vendor(models.Model):
         return self.vendor_name
 
 class Address(models.Model):
-    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name="address")
     city = models.CharField( max_length=100)
     state = models.CharField( max_length=100)
     country = models.CharField( max_length=100)
@@ -34,9 +34,10 @@ class Category(models.Model):
         return self.category
 
 class Product(models.Model):
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name="product", null=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name="product")
     name = models.CharField( max_length=100)
-    slug = models.SlugField(unique=True, )
+    slug = models.SlugField(unique=True, editable=False)
     price = models.IntegerField()
     in_store = models.IntegerField()
     description = models.TextField()
@@ -53,6 +54,9 @@ class Product(models.Model):
 class ProductImage(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name="image")
     image = models.ImageField(upload_to="product image", height_field=None, width_field=None, max_length=None)
+
+    def __str__(self):
+        return self.image.name
 
 
 

@@ -1,0 +1,124 @@
+.vendor-details{
+    margin: 3rem auto;
+    padding: 1rem;
+    box-shadow: 0 4px 8px black;
+    border-radius: 12px;
+    width: 80%;
+}
+
+.edit-profile,
+.add-product{
+    text-align: right;
+    width: 90%;
+    margin-top: 2rem;
+}
+
+.edit-profile a{
+    text-decoration: none;
+    color: white;
+    background-color: #575757;
+    padding: .5rem;
+    margin-left: auto;
+    border-radius: 4px;
+
+}
+
+.vendor-image{
+    text-align: center;
+}
+
+.vendor-image img{
+    height: 10rem;
+    width: 10rem;
+    position: relative;
+    top: -6rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px black;
+}
+
+.vendor-details h3{
+    text-align: center;
+    margin-top: -5rem;
+}
+
+.vendor-contact{
+    margin: 0 auto;
+    width: 80%;
+}
+
+.vendor-contact h4{
+    margin-top: .5rem;
+}
+
+.catalogue{
+    padding: 1rem;
+    border: 2px solid wheat;
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.my-products ul{
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
+    gap: 1rem;
+    padding: 0;
+    margin: 0;
+}
+
+.my-products ul li{
+    background-color: #302f2f69;
+    padding: auto;
+    border-radius: 12px;
+}
+
+.my-products ul li a{
+    display: inline-block;
+    text-decoration: none;
+    color: black;
+    padding: 2rem 2rem;
+    background-color: #adabab25;
+    border-radius: 12px;
+    transition: all 0.2s ease;
+}
+
+.my-products ul li a:hover,
+.my-products ul li a:active{
+    background-color: #575757;
+    transform: scale(1.1);
+}
+
+.my-products ul li img{
+    height: 5rem;
+    width: 5rem;
+}
+
+.add-product a{
+    background-color: #575757;
+    color: white;
+    padding: .5rem;
+    text-decoration: none;
+    border-radius: 4px;
+}
+
+.add-product a:hover,
+.add-product a:active{
+    background-color: #333;
+}
+
+.my-products ul li  .edit-product .edit{
+    text-decoration: none;
+    color: white;
+    padding: .5rem;
+    background-color: #086d10;
+    border-radius: 4px;
+}
+
+.my-products ul li  .edit-product .delete{
+    text-decoration: none;
+    color: white;
+    padding: .5rem;
+    background-color: #9c1818;
+    border-radius: 4px;
+}

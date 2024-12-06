@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load static %}
+{% load menu %}
+
+{% block styles %} <link rel="stylesheet" href="{% static "vendor/add_product.css" %}"> {% endblock styles %}
+
+{% block contents %}
+<div class="add">
+    <h3> Update Product </h3>
+    <h6> Update required details for your Product</h6>
+
+    <hr>
+    <br>
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        {% for form in form %}
+        <div class="form-control {% if form.errors %} error {% endif %}">
+            {{form.label_tag}}
+            {{form}}
+
+            
+            {% if form.label == "Product pictures" %}
+                <!-- the code below loops through the multiple saved files/image and places a checkbox that enables the image -->
+                 <!-- to be deleted if the user want to delete a particular image. -->
+                  <!-- Here i settled for just the image name, but the image picture itself can be placed here -->
+                {% for image in product.image.all  %}
+                <label >
+                    <input type="checkbox" name="delete-image-{{image|split}}" id="delete-image-{{image|split}}">
+                    <label for="delete-image-{{image|split}}">Delete</label>
+                    {{image|split}}
+                </label>
+                {% endfor %}
+            {% endif %}
+
+
+            {{form.errors}}
+        </div>
+        {% endfor %}
+        
+
+        <button type="submit" class="edit-button">Update Product</button>
+    </form>
+
+</div>
+{% endblock contents %}

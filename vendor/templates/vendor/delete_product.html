@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load static %}
+{% load menu %}
+
+{% block styles %} <link rel="stylesheet" href="{% static "vendor/delete_product.css" %}"> {% endblock styles %}
+
+{% block contents %}
+<div class="add">
+    <h3> Delete Product </h3>
+    <h6> Confirm you want to delete this Product </h6>
+
+    <hr>
+    <br>
+
+    <div class="confirm-delete">
+        <h2>Are you sure?</h2>
+        <br>
+        <h4>
+            Are you sure you want to delete the Product
+        </h4>
+        <br>
+
+        <div class="delete-product">
+                <img src="{{product.image.all.0.image.url}}" alt="{{product.name}}">
+                <h3>{{product.name}}</h3>
+                <p>₦{{product.price|floatformat:"2g"}}</p>
+        </div>
+    </div>
+
+    <div class="choose">
+        <form action="" method="post">
+            {% csrf_token %}
+            <button type="submit" class="delete-button">Yes i'm sure</button>
+        </form>
+
+        <div class="fuck">
+            <a href="{% url "vendor_dashboard" %}">No, take me back</a>
+        </div>
+    </div>
+
+    
+
+        <!-- <button type="submit" class="edit-button">Update Product</button> -->
+    
+
+</div>
+{% endblock contents %}

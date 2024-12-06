@@ -37,7 +37,7 @@
 
             <div class="product-details">
                 <h1>{{product.name}}</h1>
-                <p class="vendor">Sold by: <span id="vendor-name">Vendor Name</span></p>
+                <p class="vendor">Sold by: <span id="vendor-name">{{request.user.profile.vendor_name}}</span></p>
                 <div class="price">
                     <span class="price-value" id="product-price">₦{{product.price|floatformat:"2g"}}</span>
                     <span class="discount">-15% OFF</span>
@@ -65,7 +65,7 @@
         <!-- Product Description -->
         <section class="product-description">
             <h2>Description</h2>
-            {{product.description}}
+            {{product.description|linebreaks}}
         </section>
 
         <!-- Reviews Section -->

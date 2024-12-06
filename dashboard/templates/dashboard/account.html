@@ -4,9 +4,15 @@
 {% block styles %} <link rel="stylesheet" href="{% static "dashboard/account.css" %}"> {% endblock styles %}
 
 {% block contents %}
+
+{% if request.user.is_vendor %}
+<div class="store"><a href="{% url "vendor_dashboard" %}">My Store</a></div>
+{% endif %}
+
 <div class="user-detail">
     <h3>Welcome to your one shop experience {{user.username}}</h3>
 </div>
+
 
 <div class="details-table">
     <table>
@@ -21,12 +27,14 @@
     </table>
 </div>
 
-{{user.is_vendor}}
 
+{% if not request.user.is_vendor %}
 <div class="join-vendor">
     <h3>Want to sell on Better buy, become a vendor today</h3>
     <a href="{% url "vendor_register" %}">Vendor</a>
 </div>
+{% endif %}
+
 <div class="recently-viewed">
     <h2>Recently Viewed</h2>
     <div class="carousel">

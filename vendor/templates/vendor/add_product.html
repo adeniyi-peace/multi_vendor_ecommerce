@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block styles %} <link rel="stylesheet" href="{% static "vendor/add_product.css" %}"> {% endblock styles %}
+
+{% block contents %}
+<div class="add">
+    <h3> Add Product </h3>
+    <h6> Start adding required details for your Product</h6>
+
+    <hr>
+    <br>
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        {% for form in form %}
+        <div class="form-control {% if form.errors %} error {% endif %}">
+            {{form.label_tag}}
+            {{form}}
+            {{form.errors}}
+        </div>
+        {% endfor %}
+        
+        <!-- <div class="form-control">
+            <label for="id_Product_pictures">Product pictures:</label>
+            <input type="file" required name="Product_pictures" accept="image/*" id="id_Product_pictures" multiple>
+        </div> -->
+
+        <button type="submit">Add Product</button>
+    </form>
+
+</div>
+{% endblock contents %}

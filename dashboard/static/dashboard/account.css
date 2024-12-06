@@ -1,4 +1,19 @@
 
+.store{
+    margin: 1rem auto;
+    text-align: right;
+    width: 90%;
+}
+
+.store a{
+    margin-top: 1rem;
+    padding: .5rem;
+    border-radius: 4px;
+    text-decoration: none;
+    background-color: #0c863b;
+    color: white;
+}
+
 .user-detail{
     padding: 1rem;
     width: 90%;

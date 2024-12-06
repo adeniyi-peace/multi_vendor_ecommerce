@@ -1,0 +1,89 @@
+.add{
+    margin: 2rem auto;
+    border: 2px solid black;
+    width: 90%;
+    border-radius: 12px;
+}
+
+.add h3,
+.add h6{
+    text-align: center;
+}
+
+.add h3{
+    font-size: 2rem;
+}
+
+.add h6{
+    font-size: 1rem;
+    font-weight: normal;
+}
+
+.confirm-delete{
+    text-align: center;
+}
+
+.delete-product{
+    display: inline-block;
+    text-decoration: none;
+    color: black;
+    padding: 2rem 2rem;
+    background-color: #adabab25;
+    border-radius: 12px;
+    transition: all 0.2s ease;
+    width: 30%;
+    text-align: center;
+}
+
+.delete-product img{
+    height: 5rem;
+    width: 5rem;
+}
+
+.choose{
+    display: flex;
+    width: 100%;
+    text-align: center;
+    align-items: center;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+}
+
+.add form{
+    padding: 0;
+    width: 50%;
+}
+
+.add form .delete-button{
+    padding: .5rem;
+    background-color: red;
+    border-radius: 4px;
+    color: white;
+    border: none;
+}
+
+.add form .delete-button:hover,
+.add form .delete-button:active{
+    background-color: rgb(255, 111, 111);
+    color: white;
+    cursor: pointer;
+}
+
+.fuck{
+    width: 50%;
+}
+
+.choose a{
+    text-decoration: none;
+    padding: .5rem;
+    background-color: #575757;
+    border-radius: 4px;
+    color: white;
+}
+
+.choose a:hover,
+.choose a:active{
+    background-color: #6b6b6b;
+    color: white;
+    cursor: pointer;
+}

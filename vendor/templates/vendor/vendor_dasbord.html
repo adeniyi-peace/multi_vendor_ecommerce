@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block styles %}<link rel="stylesheet" href="{% static "vendor/vendor_dashboard.css" %}">{% endblock styles %}
+
+{% block contents %}
+<section class="vendor-details">
+    <div class="edit-profile"><a href="">Edit Profile</a></div>
+
+    <div class="vendor-image">
+        <img src="{{request.user.profile.logo.url}}" alt="vendor logo">
+    </div>
+
+    <h3> {{request.user.profile.vendor_name}}</h3>
+    
+    <div class="vendor-contact">
+        <h4>Address: {{request.user.profile.street}}, {{request.user.profile.city}}, {{request.user.profile.state}}, 
+            {{request.user.profile.country}}.</h4>
+        <h4>Phone No.: {{request.user.profile.number}}</h4>
+    </div>
+
+</section>
+
+
+<section class="catalogue">
+    <h2>My Products</h2>
+    <div class="my-products">
+
+        <div class="add-product">
+            <a href="{% url "add_product" %}">Add Product</a>
+        </div>
+        
+        {% for product in products %}
+        <ul>
+            <li>
+                <a href="{% url "product_detail" product.slug %}">
+                    <img src="{{product.image.all.0.image.url}}" alt="{{product.name}}">
+                    <h3>{{product.name}}</h3>
+                    <p>₦{{product.price|floatformat:"2g"}}</p>
+                </a>
+                <div class="edit-product">
+                    <a href="{% url "edit_product" product.slug %}" class="edit">Edit</a>
+                    <a href="{% url "delete_product" product.slug %}" class="delete">Delete</a>
+                </div>
+            </li>
+            {% endfor %}
+            
+        </ul>
+    </div>
+</section>
+
+{% endblock contents %}
