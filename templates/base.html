@@ -45,11 +45,15 @@
                 <ul>
                     <li><a href="#" id="menuIcon" >&#9776;</a></li>
                     <li><a href="{% url 'homepage' %}">Home</a></li>
-                    <li><a href="#">Shop</a></li>
+                    
+                    
                     <li><a href="#">Vendors</a></li>
                     <li><a href="#">Contact</a></li>
-                    <li><a href="#">Cart (0)</a></li>
+                    <li><a href="{% url "cart" %}">Cart ({% cart_number %})</a></li>
                     {% if user.is_authenticated %}
+                        {% if user.is_vendor %}
+                        <li><a href="{% url "vendor_dashboard" %}">My Shop</a></li>
+                        {% endif %}
                     <li><a href="{% url 'logout' %}">logout</a></li>
                     {% else %}
                     <li><a href="{% url 'login' %}">Login</a></li>

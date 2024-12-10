@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block title %}{{request.user.profile.vendor_name}} Shop | vendor{% endblock title %}
+
 {% block styles %}<link rel="stylesheet" href="{% static "vendor/vendor_dashboard.css" %}">{% endblock styles %}
 
 {% block contents %}

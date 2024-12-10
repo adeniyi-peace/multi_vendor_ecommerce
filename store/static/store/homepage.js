@@ -1,33 +1,24 @@
-// Get elements for carousel control
-const prevBtn = document.querySelector('.prev-btn');
-const nextBtn = document.querySelector('.next-btn');
-const carouselContainer = document.querySelector('.carousel-container');
-const carouselItems = document.querySelectorAll('.carousel-item');
+function createCarousel(carouselId) {    
+    const carouselContainer = document.getElementById(carouselId); // Selects the container element for the carousel items
+    const carouselItems = document.querySelectorAll('.carousel-item'); // Selects all the carousel items
+    const prevBtn = document.querySelector('.prev-btn'); // Selects the previous button
+    const nextBtn = document.querySelector('.next-btn'); // Selects the next button
 
-// Set the width of the container dynamically based on number of items to display
-const itemsToShow = 5; // Number of items to show at once (adjust based on your layout)
+    const itemWidth = carouselItems[0].offsetWidth; // Calculates the width of each item
 
-let currentIndex = 0;
-const totalItems = carouselItems.length;
+    // Event listener for the previous button
+    prevBtn.addEventListener('click', () => {
+    // Scrolls the carousel container to the left by the width of one item
+    carouselContainer.scrollLeft -= itemWidth;
+    });
 
-// Function to move carousel to the next set of items
-function moveCarousel(direction) {
-    // Calculate the new index
-    currentIndex += direction;
-    
-    // Ensure we don't go out of bounds
-    if (currentIndex < 0) {
-        currentIndex = totalItems - itemsToShow;
-    } else if (currentIndex >= totalItems) {
-        currentIndex = 0;
-    }
-    
-    // Update the transform property to show the correct set of items
-    const offset = -(currentIndex * (100 / itemsToShow));
-    carouselContainer.style.transform = `translateX(${offset}%)`;
+    // Event listener for the next button
+    nextBtn.addEventListener('click', () => {
+    // Scrolls the carousel container to the right by the width of one item
+    carouselContainer.scrollLeft += itemWidth;
+    });
 }
 
-// Add event listeners to the buttons
-prevBtn.addEventListener('click', () => moveCarousel(-1)); // Move left
-nextBtn.addEventListener('click', () => moveCarousel(1)); // Move right
-
+// Initialize carousels
+createCarousel('carousel1');
+// ... initialize other carousels ...

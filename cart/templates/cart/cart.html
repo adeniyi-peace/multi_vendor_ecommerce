@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Cart{% endblock title %}
+
+{% block styles %} <link rel="stylesheet" href="{%static "cart/cart.css" %}"> {% endblock styles %}
+
+{% block contents %}
+    <div class="cart-summary">
+        <h3>Cart summary</h3>
+        <strong>Subtotal</strong>  ₦{{cart.get_total_cost|floatformat:"2g"}}
+    </div>
+
+    <div class="cart-details">
+        {% if cart %}
+        {% for items in cart %}
+            <div class="join">
+                <div class="cart-item">
+
+                    <div class="image-item">
+                        <img src="{{items.product.image.all.0.image.url}}" alt="">
+                    </div>
+
+                    <div class="details">
+                        <h4>{{items.product.name}}</h4>
+                        <p>₦{{items.product.price}}</p>
+                        {% if items.product.in_store != 0 %}
+                            <p>In Stock</p>
+                        {% else %}
+                            <p>Not in Stock</p>
+                        {% endif %}
+                    </div>
+
+                </div>
+                
+                <div class="remove-or-add">
+                    <div>
+                        <a href="{% url "remove_from_cart" items.id %}">Remove</a>
+                    </div>
+
+                    <form action="{% url "update_cart" items.id %}" method="get">
+                        <input type="number" name="quantity" value="{{items.quantity}}" required id="id_quantity" min="0">
+                        <button type="submit">update</button>
+                    </form>
+                </div>
+            </div>
+        {% endfor %}
+
+        {% else %}
+            <div class="no-item">
+                <p> no item in cart</p>
+            </div>
+        {% endif %}
+    </div>
+
+    <div class="checkout">
+        {% if cart %}
+        <a href="">Checkout ₦{{cart.get_total_cost|floatformat:"2g"}}</a>
+        {% else %}
+        <p>Browse our categories and discover our best sales</p>
+        <a href="">Start shopping</a>
+        {% endif %}
+    </div>
+{% endblock contents %} 

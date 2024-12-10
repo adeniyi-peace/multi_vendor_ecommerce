@@ -62,10 +62,28 @@
     display: flex;
     gap: 20px; /* Adjust the gap between products */
     transition: transform 0.3s ease; /* Smooth transition when moving */
+    overflow-x: auto; /* Enable horizontal scrolling */
+    width: 80%;
+    scroll-behavior: smooth; /* Smooth scrolling effect */
 }
 
+/* Hide scrolbar for chrome, safari and opera */
+.carousel-container::-webkit-scrollbar{
+    display: none;
+}
+
+/* Hide scrolbar for IE, Edge and Firefox */
+.carousel-container{
+    -ms-overflow-style: none; /* IE and Edge*/
+    scrollbar-width: none; /* Firefox */
+}
+
+
+
+
+
 .carousel-item {
-    flex: 0 0 20%; /* Adjust this value to show more or fewer items */
+    flex: 0 0 25%; /* Adjust this value to show more or fewer items */
     text-align: center;
     background-color: white;
     padding: 20px;
@@ -73,6 +91,7 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
     transition: transform 0.3s ease;
+    margin-right: 20px; /* Add margin for spacing */
 }
 
 .carousel-item img {
@@ -81,25 +100,26 @@
     border-radius: 8px;
 }
 
-.featured-products button {
+.prev-btn, .next-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
     background-color: transparent;
     border: none;
     cursor: pointer;
     font-size: 24px;
     color: #333;
     padding: 10px;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-}
-
-.prev-btn {
-    left: 0;
-}
-
-.next-btn {
-    right: 0;
-}
+    z-index: 2;
+  }
+  
+  .prev-btn {
+    left: 10px;
+  }
+  
+  .next-btn {
+    right: 10px;
+  }
 
 button:hover {
     color: #f1a8a1;

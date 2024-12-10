@@ -2,6 +2,8 @@ from django import template
 
 from dashboard.models import Category
 
+from cart.cart import Cart
+
 register = template.Library()
 
 @register.inclusion_tag("menu_items.html")
@@ -17,4 +19,11 @@ def menu_items():
 def split(value):
     folder, name = value.image.name.split("/")
     return name
+
+@register.simple_tag(takes_context=True)
+def cart_number(context):
+    request = context.get("request")
+    cart = Cart(request)
+    return len(cart)
+
 

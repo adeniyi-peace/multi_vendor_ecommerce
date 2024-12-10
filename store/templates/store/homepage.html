@@ -44,10 +44,11 @@
     <section class="featured-products">
         <div class="container">
             <h2>Featured Products</h2>
-            <div class="carousel">
+            <div class="carousel" >
                 <button class="prev-btn">❮</button>
-                {% for product in products  %}
-                <div class="carousel-container">
+                
+                <div class="carousel-container" id="carousel1">
+                    {% for product in products  %}
                     <div class="carousel-item">
                         <a href="{% url "product_detail" product.slug %}"> 
                             <img src="{{product.image.all.0.image.url}}" alt="testing">

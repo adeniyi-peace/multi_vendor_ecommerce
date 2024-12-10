@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'store',
     'dashboard',
     "vendor",
+    "cart",
 
 ]
 
@@ -146,3 +147,6 @@ CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap4"
 CRISPY_TEMPLATE_PACK = "bootstrap4"
 
 LOGIN_URL = "/account/login"
+
+CART_SESSION_ID = 'cart'
+SESSION_COOKIE_AGE = 86400 # time to retain session in minute

@@ -43,22 +43,27 @@
                     <span class="discount">-15% OFF</span>
                 </div>
 
-                <div class="product-variants">
-                    <label for="color">Color:</label>
-                    <select id="color" class="variant-selector">
-                        <option value="red">Red</option>
-                        <option value="blue">Blue</option>
-                        <option value="green">Green</option>
-                    </select>
-                    <label for="size">Size:</label>
-                    <select id="size" class="variant-selector">
-                        <option value="S">S</option>
-                        <option value="M">M</option>
-                        <option value="L">L</option>
-                    </select>
-                </div>
-
-                <button class="add-to-cart">Add to Cart</button>
+                <form action="{% url "add_to_cart" product.id %}" method="get">
+                    <div class="product-variants">
+                        <label for="color">Color:</label>
+                        <select id="color" class="variant-selector">
+                            <option value="red">Red</option>
+                            <option value="blue">Blue</option>
+                            <option value="green">Green</option>
+                        </select>
+                        <label for="size">Size:</label>
+                        <select id="size" class="variant-selector">
+                            <option value="S">S</option>
+                            <option value="M">M</option>
+                            <option value="L">L</option>
+                        </select>
+                    </div>
+                    
+                    <label for="id_quantity">Quantity:</label>
+                    <input type="number" name="quantity" value="1" required id="id_quantity" min="1">
+                    <button class="add-to-cart">Add to Cart</button>
+                </form>
+                
             </div>
         </section>
 
