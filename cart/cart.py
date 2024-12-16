@@ -23,9 +23,6 @@ class Cart(object):
 
             yield item
 
-    # def __next__(self):
-    #     print("here")
-
 
     def __len__(self):
         return sum(int(item["quantity"] )for item in self.cart.values())

@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %} Add Address {% endblock title %}
+{% block styles %} <link rel="stylesheet" href="{% static "account/login.css" %}"> {% endblock styles %}
+
+{% block contents %}
+<div id="login-area">
+    <h3> Add a Address</h3>
+    <br>
+    <hr>
+    <br>
+
+    <form action="{% url "add_address" %}" method="post" autocomplete="off">
+        {% csrf_token %}
+        {% for form in form  %}
+        <input type="hidden" name="next" value="{{next}}">
+        <div class="form-control">
+            {{form.label_tag}}
+            {{form}}
+            {{form.help_text}}
+            {{form.errors}}
+        </div>
+        {% endfor %}
+        <br>
+        <div id="button">
+        <button type="submit">Add address</button>
+        </div>
+    </form>
+    <br>
+    </div>
+</div>
+{% endblock contents %}

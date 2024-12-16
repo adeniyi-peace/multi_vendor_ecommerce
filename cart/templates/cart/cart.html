@@ -55,7 +55,7 @@
 
     <div class="checkout">
         {% if cart %}
-        <a href="">Checkout ₦{{cart.get_total_cost|floatformat:"2g"}}</a>
+        <a href="{% url "checkout" %}">Checkout ₦{{cart.get_total_cost|floatformat:"2g"}}</a>
         {% else %}
         <p>Browse our categories and discover our best sales</p>
         <a href="">Start shopping</a>

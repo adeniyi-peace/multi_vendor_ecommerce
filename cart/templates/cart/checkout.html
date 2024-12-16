@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %} Checkout {% endblock title %}
+{% block styles %}<link rel="stylesheet" href="{% static "cart/checkout.css" %}">{% endblock styles %}
+
+
+{% block contents %}
+<div class="saved-address">
+    <h2>Your Delivery Addresses</h2>
+    <a href="{% url "add_address"  %}" class="add_address">Add New Address</a>
+    <br>
+    <br>
+    
+
+    
+</div>
+
+<form action="" method="post" class="checkout">
+    {% csrf_token %}
+    {% for address in request.user.address.all  %}
+    <div class="my-address">
+
+        <input type="radio" name="address-option-{{address.id}}" id="address-option-{{address.id}}">
+        <label for="address-option-{{address.id}}">Choose  Delivery Option</label>
+
+        <div class="update-address">
+            <a href="{% url "edit_address" address.id %}">Edit</a>
+        </div>
+        <br>
+        <hr>
+        <div class="address-details">
+            <p><strong>Location:</strong> {{address.city}}, {{address.state}}, {{address.country}}</p>
+            <p><strong>Phone Number:</strong> {{address.phone_number}}</p>
+        </div>
+    </div>
+    
+    
+    
+    {% endfor %}
+
+    {% for items in cart %}
+            <div class="join">
+                <div class="cart-item">
+
+                    <div class="image-item">
+                        <img src="{{items.product.image.all.0.image.url}}" alt="">
+                    </div>
+
+                    <div class="details">
+                        <h4>{{items.product.name}}</h4>
+                        <p>₦{{items.product.price}}</p>
+                        {% if items.product.in_store != 0 %}
+                            <p>In Stock</p>
+                        {% else %}
+                            <p>Not in Stock</p>
+                        {% endif %}
+                    </div>
+
+                </div>
+    
+            </div>
+        {% endfor %}
+
+        <button type="submit">Proceed to Payment ₦{{cart.get_total_cost|floatformat:"2g"}}</button>
+</form>
+<br>
+
+<script src="{% static "cart/js/checkout.js" %}"></script>
+{% endblock contents %}

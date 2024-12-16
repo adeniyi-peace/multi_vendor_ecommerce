@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %} Edit Address {% endblock title %}
+{% block styles %} <link rel="stylesheet" href="{% static "account/login.css" %}"> {% endblock styles %}
+
+{% block contents %}
+<div id="login-area">
+    <h3> Edit a Address</h3>
+    <br>
+    <hr>
+    <br>
+
+    <form action="" method="post" autocomplete="off">
+        {% csrf_token %}
+        <input type="hidden" name="next" value="{{next}}">
+        {% for form in form  %}
+        <div class="form-control">
+            {{form.label_tag}}
+            {{form}}
+            {{form.help_text}}
+            {{form.errors}}
+        </div>
+        {% endfor %}
+        <br>
+        <div id="button">
+        <button type="submit">Edit address</button>
+        </div>
+    </form>
+    <br>
+    </div>
+</div>
+{% endblock contents %}

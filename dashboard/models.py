@@ -21,6 +21,8 @@ class Vendor(models.Model):
 
 class Address(models.Model):
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name="address")
+    first_name = models.CharField(max_length=50, null=True)
+    last_name = models.CharField(max_length=50, null=True)
     city = models.CharField( max_length=100)
     state = models.CharField( max_length=100)
     country = models.CharField( max_length=100)
@@ -45,6 +47,9 @@ class Product(models.Model):
     last_modified = models.DateTimeField(auto_now=False, auto_now_add=True)
 
     
+    def __str__(self):
+        return self.name
+    
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name)
         return super().save(*args, **kwargs)
@@ -65,3 +70,27 @@ class ProductReview(models.Model):
     username = models.CharField( max_length=100)
     rating = models.IntegerField()
     review = models.TextField()
+
+
+class Order(models.Model):
+    first_name = models.CharField(max_length=50)
+    last_name = models.CharField(max_length=50)
+    city = models.CharField( max_length=100)
+    state = models.CharField( max_length=100)
+    country = models.CharField( max_length=100)
+    phone_number = models.IntegerField()
+    paid_amount = models.IntegerField()
+    is_paid = models.BooleanField(default=False)
+    vendor_id = models.CharField(max_length=255)
+    created_by = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name="order")
+    time_created = models.DateField( auto_now=False, auto_now_add=True)
+
+    def __str__(self):
+        return self.vendor_id
+
+
+class OrderItem(models.Model):
+    order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name="dfgh")
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name="rtghj")
+    price = models.IntegerField()
+    quantity = models.IntegerField()
