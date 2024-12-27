@@ -8,7 +8,7 @@ register = template.Library()
 
 @register.inclusion_tag("menu_items.html")
 def menu_items():
-    categories = Category.objects.all()
+    categories = Category.objects.all().order_by("category").values()
     
     return { "categories":categories }
 

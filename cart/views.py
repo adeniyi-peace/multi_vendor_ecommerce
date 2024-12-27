@@ -72,6 +72,12 @@ class CheckoutView(LoginRequiredMixin, View):
         if  any("address-option-" in name for name in request.POST.keys()):
             total_price = 0
 
+            """
+                implement Payment gateway here using the api
+                this might be done later if i get a free paystack or flutterwave
+                api key or if i just close eye and register on them
+            """
+
             for things in cart:
                 product = things["product"]
                 total_price += product.price * int(things["quantity"])

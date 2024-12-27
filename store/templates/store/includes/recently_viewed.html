@@ -1,0 +1,23 @@
+
+    <div class="recently-viewed">
+        <h2>Recently Viewed</h2>
+        <div class="carousel">
+            <div class="carousel-container" >
+
+                {% for product in recently_viewed %}
+                {% if product.slug != slug %}
+                <div class="carousel-item">
+                    <a href="{% url "product_detail" product.slug %}"> 
+                        <img src="{{product.image.all.0.image.url}}" alt="testing">
+                        <h3>{{product.name}}</h3>
+                        <p>₦{{product.price|floatformat:"2g"}}</p>
+                    </a>
+                </div>
+                {% endif %}
+                {% endfor %}
+                 
+            </div>
+        </div>
+    </div>
+    
+    

@@ -2,7 +2,7 @@
 {% load static %}
 
 
-{% block styles %} <link rel="stylesheet" href="{%static "store/product_detail.css" %}"> {% endblock %}
+{% block styles %} <link rel="stylesheet" href="{%static "store/css/product_detail.css" %}"> {% endblock %}
 
 {% block contents %}
     <main class="product-detail-page">
@@ -91,6 +91,8 @@
         </section>
     </main>
 
-    <script src="{% static "store/product_detail.js" %}"></script>
+    {% include "store/includes/recently_viewed.html" %}
+
+    <script src="{% static "store/js/product_detail.js" %}"></script>
 
     {% endblock contents %}

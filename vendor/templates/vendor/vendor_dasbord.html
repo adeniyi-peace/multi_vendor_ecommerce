@@ -23,6 +23,33 @@
 
 </section>
 
+<section class="orders">
+    <h3>My Orders</h3>
+    <div class="details-table">
+        <table>
+            <tr>
+                <th>Orders</th>
+                <th>Price</th>
+                <th>Quantites</th>
+                <th>Date Created</th>
+                <th>Delivered</th>
+                <th>View</th>
+            </tr>
+
+            {% for order_item in vendor_orders %}
+            <tr>
+                <td>{{order_item.product.name}}</td>
+                <td>₦{{order_item.price|floatformat:"2g"}}</td>
+                <td>{{order_item.quantity}}</td>
+                <td>{{order_item.order.time_created}}</td>
+                <td>No/yes</td>
+                <td><a href="">view</a></td>
+            </tr>
+            {% endfor %}
+            
+        </table>
+    </div>
+</section>
 
 <section class="catalogue">
     <h2>My Products</h2>

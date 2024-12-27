@@ -8,5 +8,4 @@ urlpatterns = [
     path("add-address/", views.AddAddressView.as_view(), name="add_address"),
     path("edit-address/<int:id>", views.EditAddressView.as_view(), name="edit_address"),
     path("delete-address/<int:id>", views.DeleteAddressView.as_view(), name="delete_address"),
-
 ]

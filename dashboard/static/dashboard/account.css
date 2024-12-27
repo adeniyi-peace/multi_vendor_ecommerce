@@ -83,7 +83,7 @@
 }
 
 
-/* recently view carosel */
+/* recently viewed products */
 .recently-viewed {
     padding: 40px 0;
     background-color: #f9f9f9;
@@ -94,8 +94,7 @@
     margin-bottom: 20px;
 }
 
-
-.carousel {
+.recently-viewed .carousel {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -103,75 +102,49 @@
     overflow: hidden;
 }
 
-.carousel-container {
+.recently-viewed .carousel-container {
     display: flex;
     gap: 20px; /* Adjust the gap between products */
     transition: transform 0.3s ease; /* Smooth transition when moving */
+    overflow-x: auto; /* Enable horizontal scrolling */
+    width: 80%;
+    scroll-behavior: smooth; /* Smooth scrolling effect */
 }
 
-.carousel-item {
-    flex: 0 0 20%; /* Adjust this value to show more or fewer items */
+/* Hide scrolbar for chrome, safari and opera */
+.recently-viewed .carousel-container::-webkit-scrollbar{
+    display: none;
+}
+
+/* Hide scrolbar for IE, Edge and Firefox */
+.recently-viewed .carousel-container{
+    -ms-overflow-style: none; /* IE and Edge*/
+    scrollbar-width: none; /* Firefox */
+}
+
+
+.recently-viewed .carousel-item {
+    width: 15%;
     text-align: center;
     background-color: white;
-    padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    transition: transform 0.3s ease;
 }
 
-.carousel-item img {
+.recently-viewed .carousel-item a{
+    text-decoration: none;
+    color: #000;
+}
+
+.recently-viewed .carousel-item h3,
+.recently-viewed .carousel-item p{
+    font-size: 15px;
+}
+
+.recently-viewed .carousel-item img {
     width: 100%;
-    height: auto;
     border-radius: 8px;
 }
-
-.recently-viewed button {
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    font-size: 24px;
-    color: #333;
-    padding: 10px;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-}
-
-.prev-btn {
-    left: 0;
-}
-
-.next-btn {
-    right: 0;
-}
-
-button:hover {
-    color: #f1a8a1;
-}
-
-/* Make carousel responsive: show more items on larger screens */
-@media screen and (max-width: 768px) {
-    .carousel-item {
-        flex: 0 0 45%; /* Show 2 items on smaller screens */
-    }
-}
-
-@media screen and (max-width: 480px) {
-    .carousel-item {
-        flex: 0 0 90%; /* Show 1 item on extra small screens */
-    }
-}
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -187,7 +160,6 @@ button:hover {
 /* Section Titles */
 h3, h2 {
     font-size: 28px;
-    margin-bottom: 20px;
     color: #333;
 }
 

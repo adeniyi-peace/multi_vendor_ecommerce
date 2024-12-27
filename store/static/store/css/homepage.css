@@ -29,6 +29,10 @@
     gap: 20px;
     justify-content: center;
 }
+.category-list a{
+    text-decoration: none;
+    color: #000;
+}
 .category-item {
     text-align: center;
     flex: 1;
@@ -50,7 +54,7 @@
     margin-bottom: 20px;
 }
 
-.carousel {
+.featured-products .carousel {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -58,7 +62,7 @@
     overflow: hidden;
 }
 
-.carousel-container {
+.featured-products .carousel-container {
     display: flex;
     gap: 20px; /* Adjust the gap between products */
     transition: transform 0.3s ease; /* Smooth transition when moving */
@@ -68,12 +72,12 @@
 }
 
 /* Hide scrolbar for chrome, safari and opera */
-.carousel-container::-webkit-scrollbar{
+.featured-products  .carousel-container::-webkit-scrollbar{
     display: none;
 }
 
 /* Hide scrolbar for IE, Edge and Firefox */
-.carousel-container{
+.featured-products  .carousel-container{
     -ms-overflow-style: none; /* IE and Edge*/
     scrollbar-width: none; /* Firefox */
 }
@@ -82,7 +86,7 @@
 
 
 
-.carousel-item {
+.featured-products  .carousel-item {
     flex: 0 0 25%; /* Adjust this value to show more or fewer items */
     text-align: center;
     background-color: white;
@@ -94,10 +98,15 @@
     margin-right: 20px; /* Add margin for spacing */
 }
 
-.carousel-item img {
+.featured-products .carousel-item img {
     width: 100%;
     height: auto;
     border-radius: 8px;
+}
+
+.featured-products .carousel-item a{
+    text-decoration: none;
+    color: #000;
 }
 
 .prev-btn, .next-btn {
@@ -136,6 +145,70 @@ button:hover {
     .carousel-item {
         flex: 0 0 90%; /* Show 1 item on extra small screens */
     }
+}
+
+
+/* recently viewed products */
+.recently-viewed {
+    padding: 40px 0;
+    background-color: #f9f9f9;
+}
+
+.recently-viewed h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.recently-viewed .carousel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.recently-viewed .carousel-container {
+    display: flex;
+    gap: 20px; /* Adjust the gap between products */
+    transition: transform 0.3s ease; /* Smooth transition when moving */
+    overflow-x: auto; /* Enable horizontal scrolling */
+    width: 80%;
+    scroll-behavior: smooth; /* Smooth scrolling effect */
+}
+
+/* Hide scrolbar for chrome, safari and opera */
+.recently-viewed .carousel-container::-webkit-scrollbar{
+    display: none;
+}
+
+/* Hide scrolbar for IE, Edge and Firefox */
+.recently-viewed .carousel-container{
+    -ms-overflow-style: none; /* IE and Edge*/
+    scrollbar-width: none; /* Firefox */
+}
+
+
+.recently-viewed .carousel-item {
+    width: 15%;
+    text-align: center;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.recently-viewed .carousel-item a{
+    text-decoration: none;
+    color: #000;
+}
+
+.recently-viewed .carousel-item h3,
+.recently-viewed .carousel-item p{
+    font-size: 15px;
+}
+
+.recently-viewed .carousel-item img {
+    width: 100%;
+    border-radius: 8px;
 }
 
 

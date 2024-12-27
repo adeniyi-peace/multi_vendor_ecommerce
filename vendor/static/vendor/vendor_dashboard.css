@@ -50,6 +50,33 @@
     margin-top: .5rem;
 }
 
+.orders{
+    width: 90%;
+    box-shadow: 0 4px 8px black;
+    border-radius: 12px;
+    padding: 1rem;
+    margin: 0rem  auto 2rem auto;
+    text-align: center;
+}
+
+.details-table table{
+    width: 90%;
+    margin: 0 auto;
+    border-collapse: collapse;
+    border: 1px solid #e0e0e0;
+}
+
+.details-table table th{
+    background-color: #adadad;
+    padding: .4rem;
+    border: 1px solid #e0e0e0;
+}
+
+.details-table table td{
+    border: 1px solid #e0e0e0;
+    padding: .2rem;
+}
+
 .catalogue{
     padding: 1rem;
     border: 2px solid wheat;

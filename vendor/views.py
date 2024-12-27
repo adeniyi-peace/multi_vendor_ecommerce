@@ -8,11 +8,10 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.conf import settings
 
 from django.views import View
-from django.views.generic.edit import UpdateView
 
 from .forms import RegisterVendorForm, ProductCreationForm
 
-from dashboard.models import ProductImage, Product
+from dashboard.models import ProductImage, Product, OrderItem
 
 # Create your views here.
 
@@ -46,8 +45,12 @@ class VendorDashboardView(LoginRequiredMixin, View):
     def get(self, request):
         if request.user.is_vendor:
             products = request.user.product.all()
+            order_item = OrderItem.objects.all()
+            vendor_orders = [order for order in order_item if order.product.user==request.user]
+            
             context ={
                 "products":products,
+                "vendor_orders":vendor_orders
             }
             return render(request, "vendor/vendor_dasbord.html", context)
         

@@ -16,14 +16,6 @@
     <div id="sideNav" class="sidebar">
         <button id="closeBtn" class="close-btn">&times;</button>
         <h3>Categories</h3>
-        <ul class="category-list">
-            <li><a href="#">Electronics</a></li>
-            <li><a href="#">Fashion</a></li>
-            <li><a href="#">Home & Kitchen</a></li>
-            <li><a href="#">Beauty</a></li>
-            <li><a href="#">Sports</a></li>
-            <li><a href="#">Books</a></li>
-        </ul>
         {% menu_items %}
     </div>
 
@@ -31,11 +23,11 @@
     <header>
         <div class="container">
             <div class="logo">
-                <h1><a href="#">Better Life</a></h1>
+                <h1><a href="{% url "homepage" %}">Better Life</a></h1>
             </div>
 
             <div class="search">
-                <form action="" method="get">
+                <form action="{% url "search" %}" method="get">
                     <input type="search" name="q" id="q" placeholder="What can we help you find today?">
                     <button type="submit">Search</button>
                 </form>
@@ -43,12 +35,13 @@
 
             <nav>
                 <ul>
-                    <li><a href="#" id="menuIcon" >&#9776;</a></li>
-                    <li><a href="{% url 'homepage' %}">Home</a></li>
+                    <li><a  id="menuIcon" >&#9776;</a></li>
+                    <!-- <li><a href="{% url 'homepage' %}">Home</a></li> -->
                     
                     
                     <li><a href="#">Vendors</a></li>
                     <li><a href="#">Contact</a></li>
+                    <li><a href="{% url "dashboard" %}">Account</a></li>
                     <li><a href="{% url "cart" %}">Cart ({% cart_number %})</a></li>
                     {% if user.is_authenticated %}
                         {% if user.is_vendor %}
@@ -68,6 +61,7 @@
     {% block contents %}
     
     {% endblock contents %}
+
 
     <script src="{% static "js/app.js" %}"></script>
 

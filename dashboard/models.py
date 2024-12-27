@@ -1,3 +1,6 @@
+import random
+import string
+
 from django.db import models
 from django.utils.text import slugify
 
@@ -5,6 +8,21 @@ from django.utils.text import slugify
 from account.models import CustomUser
 
 # Create your models here.
+
+
+# function to generate random but unique slug
+def unique_product_slug(title):
+    slug = slugify(title)
+    random_part = "".join(random.choices(string.ascii_lowercase + string.digits, k=8))
+    unique_slug = f"{random_part}-{slug}"
+
+    while Product.objects.filter(slug=unique_slug).exists():
+        random_part = "".join(random.choices(string.ascii_lowercase + string.digits, k=8))
+        unique_slug = f"{random_part}-{slug}"
+
+    return unique_slug
+
+
 
 class Vendor(models.Model):
     user = models.OneToOneField("account.CustomUser", on_delete=models.CASCADE, related_name="profile")
@@ -51,7 +69,7 @@ class Product(models.Model):
         return self.name
     
     def save(self, *args, **kwargs):
-        self.slug = slugify(self.name)
+        self.slug = unique_product_slug(self.name)
         return super().save(*args, **kwargs)
     ...
 
@@ -90,7 +108,7 @@ class Order(models.Model):
 
 
 class OrderItem(models.Model):
-    order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name="dfgh")
+    order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name="order_item")
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name="rtghj")
     price = models.IntegerField()
     quantity = models.IntegerField()

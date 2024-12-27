@@ -21,4 +21,5 @@ function createCarousel(carouselId) {
 
 // Initialize carousels
 createCarousel('carousel1');
+createCarousel('carousel2');
 // ... initialize other carousels ...

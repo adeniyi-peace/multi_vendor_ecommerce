@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %} {% endblock title %}
+
+{% block styles %} <link rel="stylesheet" href="{% static "store/css/list_product.css" %}"> {% endblock styles %}
+
+{% block contents %}
+
+<section class="all-product">
+
+    {% if products %}
+    {% for product in  products %}
+    <div class="product-item">
+        <a href="{% url "product_detail" product.slug %}"> 
+            <img src="{{product.image.all.0.image.url}}" alt="testing">
+            <h3>{{product.name}}</h3>
+            <p>₦{{product.price|floatformat:"2g"}}</p>
+        </a>
+    </div>
+    {% endfor %}
+
+    {% else %}
+        <div class="empty">
+            <h3>No Products Found</h3>
+        </div>
+    {% endif %}
+</section>
+
+{% endblock contents %}
