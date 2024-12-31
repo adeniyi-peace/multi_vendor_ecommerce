@@ -26,7 +26,7 @@ def unique_product_slug(title):
 
 class Vendor(models.Model):
     user = models.OneToOneField("account.CustomUser", on_delete=models.CASCADE, related_name="profile")
-    logo = models.ImageField(upload_to="profile picture", height_field=None, width_field=None, max_length=None, blank=True)
+    logo = models.ImageField(upload_to="profile picture", height_field=None, width_field=None, max_length=None)
     vendor_name = models.CharField(max_length=100, unique=True)
     number = models.CharField(max_length=50)
     street = models.CharField(max_length=50)

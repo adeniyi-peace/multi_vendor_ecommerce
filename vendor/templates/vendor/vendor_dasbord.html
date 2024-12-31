@@ -7,7 +7,7 @@
 
 {% block contents %}
 <section class="vendor-details">
-    <div class="edit-profile"><a href="">Edit Profile</a></div>
+    <div class="edit-profile"><a href="{% url "edit_vendor_profile" %}">Edit Profile</a></div>
 
     <div class="vendor-image">
         <img src="{{request.user.profile.logo.url}}" alt="vendor logo">
@@ -43,7 +43,7 @@
                 <td>{{order_item.quantity}}</td>
                 <td>{{order_item.order.time_created}}</td>
                 <td>No/yes</td>
-                <td><a href="">view</a></td>
+                <td><a href="{% url "vendor_order" order_item.id %}">view</a></td>
             </tr>
             {% endfor %}
             
@@ -59,8 +59,9 @@
             <a href="{% url "add_product" %}">Add Product</a>
         </div>
         
-        {% for product in products %}
         <ul>
+        {% for product in products %}
+        
             <li>
                 <a href="{% url "product_detail" product.slug %}">
                     <img src="{{product.image.all.0.image.url}}" alt="{{product.name}}">

@@ -1,0 +1,36 @@
+.card{
+    border: 1px solid grey;
+    margin: 1rem auto;
+    width: 90%;
+}
+
+.card-body .name{
+    margin: 1rem 0;
+}
+
+.card-body p{
+    margin: 1rem 0;
+}
+
+.order-item{
+    text-align: center;
+}
+
+.order-item img{
+    width: 10rem;
+    height: 10rem;
+}
+
+.btn-secondary{
+    position: relative;
+    text-decoration: none;
+    color: white;
+    padding: .5rem;
+    border-radius: 4px;
+    bottom: 1rem;
+    background-color: #363783;
+    left: 5rem;
+}
+
+
+

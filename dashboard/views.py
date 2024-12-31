@@ -150,7 +150,7 @@ class DeleteAddressView(LoginRequiredMixin, View):
         return redirect(reverse("my_address"))
 
 
-class SavedProductView(View):
+class SavedProductView(LoginRequiredMixin, View):
     def get(self, request):
         saved = SavedProduct(request)
 
@@ -162,14 +162,14 @@ class SavedProductView(View):
         context = {"saved_products":saved_products}
         return render(request, "dashboard/saved_product.html", context)
 
-class AddSavedProductView(View):
+class AddSavedProductView(LoginRequiredMixin, View):
     def get(self, request, id):
         saved_product = SavedProduct(request)
         saved_product.add(id)
         return redirect(request.META.get("HTTP_REFERER", "/"))
     
 
-class RemoveSavedProductView(View):
+class RemoveSavedProductView(LoginRequiredMixin, View):
     def get(self, request, id):
         saved_product = SavedProduct(request)
         saved_product.delete(id)

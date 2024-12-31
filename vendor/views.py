@@ -24,7 +24,7 @@ class RegisterVendorView(LoginRequiredMixin, View):
         return render(request, "vendor/register_vendor.html", context)
     
     def post(self, request):
-        form = RegisterVendorForm(request.POST)
+        form = RegisterVendorForm(request.POST, request.FILES)
 
         if form.is_valid():
             form = form.save(commit=False)
@@ -37,6 +37,34 @@ class RegisterVendorView(LoginRequiredMixin, View):
         
         context = {"form":form}
         return render(request, "vendor/register_vendor.html", context)
+    
+
+class EditVendorProfileView(LoginRequiredMixin, View):
+    def get(self, request):
+        form = RegisterVendorForm(instance=request.user.profile)
+        context = {"form":form}
+        return render(request, "vendor/edit_vendor_profile.html", context)
+    
+    def post(self, request):
+        form = RegisterVendorForm(request.POST, request.FILES, instance=request.user.profile)
+
+        if form.is_valid():
+            form.save()
+            return redirect("vendor_dashboard")
+        
+        context = {"form":form}
+        return render(request, "vendor/edit_vendor_profile.html", context)
+    
+    
+
+
+class VendorOrderView(LoginRequiredMixin, View):
+    def get(self, request, id):
+        order = OrderItem.objects.get(id=id)
+        context = {"order_item":order}
+        return render(request, "vendor/vendor_order.html", context)
+
+        ...
 
 
 class VendorDashboardView(LoginRequiredMixin, View):

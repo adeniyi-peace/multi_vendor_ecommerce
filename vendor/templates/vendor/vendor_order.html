@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %} Orders {% endblock title %}
+{% block styles %}<link rel="stylesheet" href="{% static "vendor/vendor_orders.css" %}">{% endblock styles %}
+
+
+{% block contents %}
+
+<div class="card" >
+        
+    <div class="card-body">
+        
+    <p class="card-text"><strong>Name: </strong>{{order_item.order.first_name}} {{order_item.order.last_name|upper}}</p>
+    <p><strong>Phone Number: </strong>{{order_item.order.phone_number}}</p> 
+    <p><strong>Address: </strong>{{order_item.order.city}} {{order_item.order.state}} {{order_item.order.country}}</p>
+    <p><strong>Date Ordered: </strong>{{order_item.order.time_created}}</p>
+    
+    <div class="order-item">
+        <img src="{{order_item.product.image.all.0.image.url}}" alt="{{order_item.product.name}}">
+        <div class="product-details">
+                <h3>{{order_item.product.name}}</h3>
+                <p>₦{{order_item.product.price|floatformat:"2g"}}</p>
+                <p>Quantity: {{order_item.quantity}}</p>
+        </div>
+    </div>
+
+    </div>
+</div>
+<br>
+
+<a href="{% url "vendor_dashboard" %}" class="btn-secondary">Return </a>
+
+&nbsp;
+
+
+{% endblock contents %}
