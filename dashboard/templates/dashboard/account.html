@@ -19,12 +19,12 @@
 <div class="details-table">
     <table>
         <tr>
-            <td>Profile</td>
-            <td>My Order</td>
+            <td><a href="{% url "user_profile" %}">Profile</a></td>
+            <td><a href="{% url "user_order" %}">My Order</a></td>
         </tr>
         <tr>
             <td><a href="{% url "my_address" %}">My Address</a></td>
-            <td>My Saved Items</td>
+            <td><a href="{% url "saved_product" %}">My Saved Items</a></td>
         </tr>
     </table>
 </div>

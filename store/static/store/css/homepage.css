@@ -87,7 +87,7 @@
 
 
 .featured-products  .carousel-item {
-    flex: 0 0 25%; /* Adjust this value to show more or fewer items */
+    flex: 0 0 30%; /* Adjust this value to show more or fewer items */
     text-align: center;
     background-color: white;
     padding: 20px;
@@ -107,6 +107,26 @@
 .featured-products .carousel-item a{
     text-decoration: none;
     color: #000;
+}
+
+
+.featured-products .carousel-item .add-save{
+    display: none;
+    margin-top: 1rem;
+}
+
+
+.featured-products .carousel-item .add-save a {
+    text-decoration: none;
+    color: #000;
+    background-color: #575757;
+    padding: .5rem;
+    border-radius: 4px;
+}
+
+
+.featured-products .carousel-item:hover  .add-save{
+    display: inline-block;
 }
 
 .prev-btn, .next-btn {

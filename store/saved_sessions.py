@@ -37,3 +37,33 @@ class RecentlyViewed(object):
     def save(self):
         self.session["recently_viewed"] = self.recently_viewed
         self.session.modified = True
+
+
+
+class SavedProduct(object):
+    def __init__(self, request):
+        self.session = request.session
+        saved_product = self.session.get("saved_product")
+
+        if not saved_product:
+            saved_product = self.session["saved_product"] = []
+        
+        self.saved_product = saved_product
+        
+
+    def items(self):
+        return self.saved_product
+
+    def add(self, pk):
+        if pk not in self.saved_product:
+            self.saved_product.insert(0, pk)
+            self.save()
+
+
+    def delete(self, pk):
+        self.saved_product.remove(pk)
+        self.save()
+
+    def save(self):
+        self.session["saved_product"] = self.saved_product
+        self.session.modified = True

@@ -26,9 +26,27 @@
     color: black;
 }
 
+.add-save{
+    display: none;
+    margin-top: 1rem;
+}
+
+.add-save a {
+    text-decoration: none;
+    color: #000;
+    background-color: #575757;
+    padding: .5rem;
+    border-radius: 4px;
+}
+
+
 .product-item:hover,
 .product-item:active{
     transform: scale(1.05);
+}
+
+.product-item:hover  .add-save{
+    display: block;
 }
 
 .empty{

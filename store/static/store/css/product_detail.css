@@ -118,6 +118,15 @@
     margin: 10px 0;
 }
 
+.save-product{
+    width: 50%;
+    text-decoration: none;
+    padding: 1rem ;
+    background-color: #27ae60;
+    color: white;
+    border-radius: 4px;
+}
+
 .add-to-cart {
     background-color: #27ae60;
     color: #fff;
@@ -126,7 +135,7 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    width: 100%;
+    width: 50%;
     transition: background-color 0.3s ease;
 }
 

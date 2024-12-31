@@ -17,6 +17,16 @@
             <h3>{{product.name}}</h3>
             <p>₦{{product.price|floatformat:"2g"}}</p>
         </a>
+        
+        <div class="add-save">
+            
+            {% if product.id  not in saved.items %}
+                <a href="{% url "add_save" product.id %}" class="save-product">Save Product</a>
+            {% else %}
+                <a href="{% url "remove_save" product.id %}" class="save-product">Unsave Product</a>
+            {% endif %}
+            <a href="{% url "add_to_cart" product.id %}" class="add">Add to cart</a>
+        </div>
     </div>
     {% endfor %}
 

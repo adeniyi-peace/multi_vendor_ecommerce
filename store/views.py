@@ -6,7 +6,7 @@ from django.views import View
 from django.views.generic import ListView
 
 from dashboard.models import Product, Category
-from .saved_sessions import RecentlyViewed
+from .saved_sessions import RecentlyViewed, SavedProduct
 
 # Create your views here.
 
@@ -22,7 +22,8 @@ class HomepageView(View):
 class CategoryView(View):
     def get(self, request, category):
         products = Category.objects.get(category=category).product.all()
-        context = {"products":products}
+        saved = SavedProduct(request)
+        context = {"products":products, "saved":saved}
         return render(request, "store/list_product.html", context)
     
 
@@ -31,13 +32,25 @@ class ListProductView(ListView):
     template_name = "store/list_product.html"
     context_object_name = "products"
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        saved = SavedProduct(self.request)
+        context["saved"] = saved
+        return context
+
+
 
 
 class ProductDetailView(View):
     def get(self, request, slug):
         model = Product.objects.get(slug=slug)
+
         RecentlyViewed(request).add(str(model.pk))
-        context ={"product":model, "slug":model.slug}
+
+        saved = SavedProduct(request)
+
+        context ={"product":model, "slug":model.slug, "saved":saved}
+
         return render(request, "store/product_detail.html", context)
         ...
 

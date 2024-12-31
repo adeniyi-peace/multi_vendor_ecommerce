@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %} Profile {% endblock title %}
+{% block styles %} <link rel="stylesheet" href="{% static "dashboard/profile.css" %}"> {% endblock styles %}
+
+{% block contents %}
+<div class="card" >
+        
+    <div class="card-body">
+        <strong class="name">
+            <i></i>
+            &nbsp;
+            {{user.first_name}}
+            {{user.last_name|upper}}
+        </strong>
+
+        <hr>
+    <p class="card-text"><strong>ID: </strong>@{{user.username}}</p> 
+
+    <p class="card-text"><strong>Email: </strong>{{user.email}}</p>
+
+
+    <p class="card-text"><strong>Date Joined: </strong>{{user.date_joined.date}}</p>
+    </div>
+</div>
+<br>
+
+<a href="{% url "dashboard" %}" class="btn-secondary">Return </a>
+
+&nbsp;
+
+<a href="{% url "edit_profile" %}" class="btn-info">Update User Profile </a>
+
+&nbsp;
+
+
+{% endblock contents %}

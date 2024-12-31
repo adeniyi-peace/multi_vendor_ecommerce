@@ -2,7 +2,6 @@ from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 
 from django import forms
 from django.forms.widgets import PasswordInput, TextInput
-from django.forms import ModelForm, Form
 
 from .models import CustomUser
 

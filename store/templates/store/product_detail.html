@@ -61,6 +61,16 @@
                     
                     <label for="id_quantity">Quantity:</label>
                     <input type="number" name="quantity" value="1" required id="id_quantity" min="1">
+                    
+                    <br>
+                    <br>
+                    
+                    {% if product.id  not in saved.items %}
+                    <a href="{% url "add_save" product.id %}" class="save-product">Save Product</a>
+                    {% else %}
+                    <a href="{% url "remove_save" product.id %}" class="save-product">Remove Product from Save</a>
+                    {% endif %}
+
                     <button class="add-to-cart">Add to Cart</button>
                 </form>
                 

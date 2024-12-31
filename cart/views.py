@@ -25,7 +25,7 @@ class CartView(View):
 
 class AddToCartView(View):
     def get(self, request, id):
-        quantity = request.GET.get("quantity","")
+        quantity = request.GET.get("quantity","1")
         cart = Cart(request)
         cart.add(id, quantity=quantity)
         
@@ -90,11 +90,12 @@ class CheckoutView(LoginRequiredMixin, View):
                                         paid_amount=total_price,  vendor_id="itouch", created_by=request.user)
                 
             for item in cart:
-                print(item)
                 product = item["product"]
                 price = product.price
                 quantity =item["quantity"]
                 OrderItem.objects.create(order=order, product=product, price=price, quantity=quantity)
+
+            cart.clear()
 
             return redirect("dashboard")
 

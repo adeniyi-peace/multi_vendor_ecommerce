@@ -6,7 +6,9 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views import View
 
 from .forms import AddressForm
-from .models import Address
+from .models import Address, Product, Order
+from store.saved_sessions import SavedProduct
+from .forms import UpdateUserForm
 
 
 
@@ -18,7 +20,42 @@ class DashboardView(LoginRequiredMixin, View):
 
     def get(self, request):
         return render(request, "dashboard/account.html")
-        ...
+        
+
+
+class ProfileView(LoginRequiredMixin, View):
+    def get(self, request):
+        context = {"user":request.user}
+        return render(request, "dashboard/profile.html", context)
+
+
+class EditProfileView(LoginRequiredMixin, View):
+    def get(self, request):
+        form = UpdateUserForm(instance=request.user)
+        context = {"form":form}
+        return render(request, "dashboard/edit_profile.html", context)
+    
+    def post(self, request):
+        form = UpdateUserForm(request.POST, instance=request.user)
+
+        if form.is_valid():
+            form.save()
+            return redirect(reverse("user_profile"))
+        
+        context = {"form":form}
+        return render(request, "dashboard/edit_profile.html", context)
+
+
+
+class UserOrderView(LoginRequiredMixin, View):
+    def get(self, request):
+        orders = request.user.order.all()
+        context = {"orders":orders}
+        print(orders)
+        return render(request, "dashboard/orders.html", context)
+
+
+
 
 
 class UserAddressView(LoginRequiredMixin, View):
@@ -111,3 +148,29 @@ class DeleteAddressView(LoginRequiredMixin, View):
         address = get_object_or_404(Address, id=id)
         address.delete()
         return redirect(reverse("my_address"))
+
+
+class SavedProductView(View):
+    def get(self, request):
+        saved = SavedProduct(request)
+
+        # to future peace, i decided to call the objects from here and not inside from the SavedProduct
+        # class because i might use pagination, calling it here allows for easier pagination logic
+        saved_products = Product.objects.filter(id__in=saved.items())
+
+
+        context = {"saved_products":saved_products}
+        return render(request, "dashboard/saved_product.html", context)
+
+class AddSavedProductView(View):
+    def get(self, request, id):
+        saved_product = SavedProduct(request)
+        saved_product.add(id)
+        return redirect(request.META.get("HTTP_REFERER", "/"))
+    
+
+class RemoveSavedProductView(View):
+    def get(self, request, id):
+        saved_product = SavedProduct(request)
+        saved_product.delete(id)
+        return redirect(request.META.get("HTTP_REFERER", "/"))

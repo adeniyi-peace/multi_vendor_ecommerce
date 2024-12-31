@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %} My  Orders {% endblock title %}
+{% block styles %}<link rel="stylesheet" href="{% static "dashboard/orders.css" %}">{% endblock styles %}
+
+
+{% block contents %}
+<h1>My Orders</h1>
+<div class="all-saved">
+    
+    {% if orders  %}
+    <ul>
+        {% for order in orders %}
+            <div class="order-detail">
+                <h3>Order Created on {{order.time_created}}</h3>
+                <p>To be deliverd to <strong>{{order.last_name}} {{order.first_name}}</strong></p>
+                <p><strong>Address:</strong> {{order.city}} {{order.state}} {{order.country}}</p>
+                <p><strong>Total:</strong> ₦{{order.paid_amount|floatformat:"2g"}}</p>
+
+                <div class="order-items">
+                    <ul>
+                    {% for order_item in order.order_item.all %}
+                    <li>
+                        <img src="{{order_item.product.image.all.0.image.url}}" alt="{{order_item.product.name}}">
+                        <div class="product-details">
+                            <a href="{% url "product_detail" order_item.product.slug %}">
+                                <h3>{{order_item.product.name}}</h3>
+                                <p>₦{{order_item.product.price|floatformat:"2g"}}</p>
+                                <p>Quantity: {{order_item.quantity}}</p>
+                            </a>
+        
+                            <br>
+        
+                            <a href="{% url "add_to_cart" order_item.product.id %}" class="buy-again" >Buy Again</a>
+                        </div>
+                    </li>
+
+                    {% endfor %}
+                    </ul>
+                </div>
+
+            </div>
+            
+        {% endfor %}
+    </ul>
+    {% else %}
+            <div class="no-item">
+                <p> You have not ordered anything yet</p>
+            </div>
+    {% endif %}
+</div>
+
+    
+{% endblock contents %}
