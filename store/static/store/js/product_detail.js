@@ -1,79 +1,79 @@
-document.addEventListener('DOMContentLoaded', () => {
-    // Image Thumbnail Preview
-    const thumbnails = document.querySelectorAll('.thumbnail');
-    const mainImage = document.getElementById('main-image');
+// document.addEventListener('DOMContentLoaded', () => {
+//     // Image Thumbnail Preview
+//     const thumbnails = document.querySelectorAll('.thumbnail');
+//     const mainImage = document.getElementById('main-image');
     
-    thumbnails.forEach(thumb => {
-        thumb.addEventListener('click', () => {
-            const newImageSrc = thumb.getAttribute('data-img');
-            mainImage.src = newImageSrc;
-        });
-    });
+//     thumbnails.forEach(thumb => {
+//         thumb.addEventListener('click', () => {
+//             const newImageSrc = thumb.getAttribute('data-img');
+//             mainImage.src = newImageSrc;
+//         });
+//     });
 
-    // Add to Cart Button Interaction
-    const addToCartButton = document.querySelector('.add-to-cart');
+//     // Add to Cart Button Interaction
+//     const addToCartButton = document.querySelector('.add-to-cart');
     
-    addToCartButton.addEventListener('click', () => {
-        const selectedColor = document.getElementById('color').value;
-        const selectedSize = document.getElementById('size').value;
-        const productPrice = document.getElementById('product-price').textContent.trim();
-        const productName = document.querySelector('.product-details h1').textContent;
+//     addToCartButton.addEventListener('click', () => {
+//         const selectedColor = document.getElementById('color').value;
+//         const selectedSize = document.getElementById('size').value;
+//         const productPrice = document.getElementById('product-price').textContent.trim();
+//         const productName = document.querySelector('.product-details h1').textContent;
         
-        const cartItem = {
-            productName: productName,
-            price: productPrice,
-            color: selectedColor,
-            size: selectedSize
-        };
+//         const cartItem = {
+//             productName: productName,
+//             price: productPrice,
+//             color: selectedColor,
+//             size: selectedSize
+//         };
 
-        // Simulate adding the item to the cart (this would normally interact with a shopping cart system)
-        alert(`Added to Cart: \n${cartItem.productName} - ${cartItem.color} - ${cartItem.size} - ${cartItem.price}`);
+//         // Simulate adding the item to the cart (this would normally interact with a shopping cart system)
+//         alert(`Added to Cart: \n${cartItem.productName} - ${cartItem.color} - ${cartItem.size} - ${cartItem.price}`);
 
-        // Optionally, you can save the cart item in a local storage or session storage for real cart functionality
-        // For example: 
-        // localStorage.setItem('cart', JSON.stringify(cartItem));
-    });
+//         // Optionally, you can save the cart item in a local storage or session storage for real cart functionality
+//         // For example: 
+//         // localStorage.setItem('cart', JSON.stringify(cartItem));
+//     });
 
-    // Review Submission
-    const reviewForm = document.querySelector('.review-form');
-    const submitReviewButton = document.querySelector('.submit-review');
+//     // Review Submission
+//     const reviewForm = document.querySelector('.review-form');
+//     const submitReviewButton = document.querySelector('.submit-review');
     
-    submitReviewButton.addEventListener('click', () => {
-        const reviewText = reviewForm.querySelector('textarea').value;
-        const reviewAuthor = "Anonymous";  // This can be replaced with logged-in user info
-        const reviewRating = "★★★★☆";  // Ideally, the rating would be dynamic (e.g., a star rating system)
+//     submitReviewButton.addEventListener('click', () => {
+//         const reviewText = reviewForm.querySelector('textarea').value;
+//         const reviewAuthor = "Anonymous";  // This can be replaced with logged-in user info
+//         const reviewRating = "★★★★☆";  // Ideally, the rating would be dynamic (e.g., a star rating system)
 
-        if (reviewText.trim() === "") {
-            alert("Please write a review before submitting.");
-            return;
-        }
+//         if (reviewText.trim() === "") {
+//             alert("Please write a review before submitting.");
+//             return;
+//         }
 
-        // Create a new review element and append it to the reviews section
-        const reviewSection = document.querySelector('.reviews-section');
+//         // Create a new review element and append it to the reviews section
+//         const reviewSection = document.querySelector('.reviews-section');
 
-        const newReview = document.createElement('div');
-        newReview.classList.add('review');
+//         const newReview = document.createElement('div');
+//         newReview.classList.add('review');
 
-        const reviewHeader = document.createElement('div');
-        reviewHeader.classList.add('review-header');
-        reviewHeader.innerHTML = `
-            <span class="review-author">${reviewAuthor}</span>
-            <span class="review-rating">${reviewRating}</span>
-        `;
+//         const reviewHeader = document.createElement('div');
+//         reviewHeader.classList.add('review-header');
+//         reviewHeader.innerHTML = `
+//             <span class="review-author">${reviewAuthor}</span>
+//             <span class="review-rating">${reviewRating}</span>
+//         `;
 
-        const reviewBody = document.createElement('p');
-        reviewBody.classList.add('review-text');
-        reviewBody.textContent = reviewText;
+//         const reviewBody = document.createElement('p');
+//         reviewBody.classList.add('review-text');
+//         reviewBody.textContent = reviewText;
 
-        newReview.appendChild(reviewHeader);
-        newReview.appendChild(reviewBody);
+//         newReview.appendChild(reviewHeader);
+//         newReview.appendChild(reviewBody);
 
-        reviewSection.appendChild(newReview);
+//         reviewSection.appendChild(newReview);
 
-        // Clear the review form
-        reviewForm.querySelector('textarea').value = '';
-    });
-});
+//         // Clear the review form
+//         reviewForm.querySelector('textarea').value = '';
+//     });
+// });
 
 // carosel functions
 

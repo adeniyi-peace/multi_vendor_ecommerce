@@ -24,7 +24,8 @@
                 {% for category in categories %}
                 <div class="category-item">
                     <a href="{% url "list_category" category.category %}">
-                        <img src="category1.jpg" alt="Category 1">
+                        <!-- replace image with icon -->
+                        <!-- <img src="category1.jpg" alt="Category 1"> -->
                         <h3>{{category.category}}</h3>
                     </a>
                 </div>
@@ -50,7 +51,11 @@
                             <p>₦{{product.price|floatformat:"2g"}}</p>
                         </a>
                         <div class="add-save">
-                            <a href="" class="save">Save product</a>
+                            {% if product.id  not in saved.items %}
+                            <a href="{% url "add_save" product.id %}" class="save-product">Save Product</a>
+                            {% else %}
+                                <a href="{% url "remove_save" product.id %}" class="save-product">Unsave Product</a>
+                            {% endif %}
                             <a href="{% url "add_to_cart" product.id %}" class="add">Add to cart</a>
                         </div>
                     </div>
@@ -70,18 +75,20 @@
         <div class="container">
             <h2>Our Top Vendors</h2>
             <div class="vendor-list">
+                {% for vendor in vendors %}
                 <div class="vendor-item">
-                    <img src="vendor1.jpg" alt="Vendor 1">
-                    <h3>Vendor 1</h3>
+                    <img src="{{vendor.logo.url}}" alt="{{vendor.vendor_name}}">
+                    <h3>{{vendor.vendor_name}}</h3>
                 </div>
-                <div class="vendor-item">
+                {% endfor %}
+                <!-- <div class="vendor-item">
                     <img src="vendor2.jpg" alt="Vendor 2">
                     <h3>Vendor 2</h3>
                 </div>
                 <div class="vendor-item">
                     <img src="vendor3.jpg" alt="Vendor 3">
                     <h3>Vendor 3</h3>
-                </div>
+                </div> -->
             </div>
         </div>
     </section>

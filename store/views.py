@@ -5,7 +5,7 @@ from django.db.models import Q
 from django.views import View
 from django.views.generic import ListView
 
-from dashboard.models import Product, Category
+from dashboard.models import Product, Category, Vendor
 from .saved_sessions import RecentlyViewed, SavedProduct
 
 # Create your views here.
@@ -14,7 +14,9 @@ class HomepageView(View):
     def get(self, request):
         model = Product.objects.all()
         categories = Category.objects.all().order_by("?")[:4]
-        context ={"products":model, "categories":categories}
+        vendors = Vendor.objects.all().order_by("?")[:3]
+        saved = SavedProduct(request)
+        context ={"products":model, "categories":categories, "saved":saved, "vendors":vendors}
         return render(request, "store/homepage.html", context)
 
 

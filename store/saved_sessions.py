@@ -18,6 +18,9 @@ class RecentlyViewed(object):
 
             yield product
 
+    def __len__(self):
+        return (len(self.recently_viewed))
+
     def add(self, pk):
         if pk not in self.recently_viewed:
             self.recently_viewed.insert(0, pk)
