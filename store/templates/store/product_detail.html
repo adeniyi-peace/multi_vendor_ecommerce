@@ -40,11 +40,11 @@
                 <p class="vendor">Sold by: <span id="vendor-name">{{request.user.profile.vendor_name}}</span></p>
                 <div class="price">
                     <span class="price-value" id="product-price">₦{{product.price|floatformat:"2g"}}</span>
-                    <span class="discount">-15% OFF</span>
+                    <!-- <span class="discount">-15% OFF</span> -->
                 </div>
 
                 <form action="{% url "add_to_cart" product.id %}" method="get">
-                    <div class="product-variants">
+                    <!-- <div class="product-variants">
                         <label for="color">Color:</label>
                         <select id="color" class="variant-selector">
                             <option value="red">Red</option>
@@ -57,7 +57,7 @@
                             <option value="M">M</option>
                             <option value="L">L</option>
                         </select>
-                    </div>
+                    </div> -->
                     
                     <label for="id_quantity">Quantity:</label>
                     <input type="number" name="quantity" value="1" required id="id_quantity" min="1">
