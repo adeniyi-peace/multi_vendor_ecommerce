@@ -12,6 +12,7 @@
 
     <form action="" method="post" autocomplete="off">
         {% csrf_token %}
+        <input type="hidden" name="next" value="{{next}}">
         <div class="nf-error">
         {{form.non_field_errors}}
         </div>

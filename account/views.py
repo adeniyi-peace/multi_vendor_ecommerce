@@ -30,12 +30,14 @@ class RegisterUserView(View):
 # ~ login users
 class LoginView(View):
     def get(self, request):
+        next_redirect = request.GET.get("next", "")
         form = UserLoginForm
-        context = {"form":form}
+        context = {"form":form, "next":next_redirect}
         return render(request, "account/login.html", context)
     
     def post(self, request):
         form = UserLoginForm(request, request.POST)
+        next_redirect = request.POST.get("next", "")
 
         if form.is_valid():
             username = request.POST.get("username")
@@ -45,12 +47,13 @@ class LoginView(View):
 
             if user:
                 login(request, user)
+                if next_redirect != "":
+                    return redirect(next_redirect)
                 return redirect("homepage")
 
             
         
         context = {"form":form}
-        print(form)
         return render(request, "account/login.html", context)
     
 

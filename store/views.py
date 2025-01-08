@@ -1,5 +1,6 @@
-from django.shortcuts import render
-from django.http import HttpResponse
+from django.shortcuts import render,redirect
+from django.urls import reverse
+from django.contrib import messages
 from django.db.models import Q
 
 from django.views import View
@@ -7,6 +8,7 @@ from django.views.generic import ListView
 
 from dashboard.models import Product, Category, Vendor
 from .saved_sessions import RecentlyViewed, SavedProduct
+from .forms import ProductReviewForm
 
 # Create your views here.
 
@@ -51,10 +53,40 @@ class ProductDetailView(View):
 
         saved = SavedProduct(request)
 
-        context ={"product":model, "slug":model.slug, "saved":saved}
+        form = ProductReviewForm()
+        
+
+        context ={"product":model, "slug":model.slug, "saved":saved, "form":form}
 
         return render(request, "store/product_detail.html", context)
-        ...
+    
+
+    def post(self, request, slug):
+        model = Product.objects.get(slug=slug)
+
+        saved = SavedProduct(request)
+
+        form = ProductReviewForm(request.POST)
+
+        if form.is_valid():
+            if request.user.username!="":
+                form = form.save(commit=False)
+                form.product = model
+                form.username = request.user.username
+                form.save()
+                return redirect(reverse("product_detail", args=[slug]))
+            
+            else:
+                messages.info(request, "Login to Submit Review")
+            
+        else:
+            messages.info(request, "Error in submitting Review")
+
+        context ={"product":model, "slug":model.slug, "saved":saved, "form":form}
+
+        return render(request, "store/product_detail.html", context)
+
+
 
 
 class SearchView(View):

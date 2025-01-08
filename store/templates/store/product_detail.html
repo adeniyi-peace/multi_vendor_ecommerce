@@ -5,6 +5,16 @@
 {% block styles %} <link rel="stylesheet" href="{%static "store/css/product_detail.css" %}"> {% endblock %}
 
 {% block contents %}
+    <div class="review-error">
+        <style>
+            .review-error h4{padding: 1rem; background-color: red; color: white;}
+            .review-error{text-align: center;}
+        </style>
+        {% for message in messages  %}
+        <h4>{{message}}</h4>
+        {% endfor %}
+    </div>
+
     <main class="product-detail-page">
         <!-- Product Info Section -->
         <section class="product-info">
@@ -94,10 +104,36 @@
                 <p class="review-text">This product is amazing! It exceeded my expectations in terms of quality and value.</p>
             </div>
 
-            <div class="review-form">
-                <textarea placeholder="Write your review..." rows="4"></textarea>
-                <button class="submit-review">Submit Review</button>
+            {% for review in product.review.all  %}
+            <div class="review">
+                <div class="review-header">
+                    <span class="review-author">{{review.username}}</span>
+                    <span class="review-rating">
+                        {% if review.rating == 1 %}★☆☆☆☆
+                        {% elif review.rating == 2 %}★★☆☆☆
+                        {% elif review.rating == 3 %}★★★☆☆
+                        {% elif review.rating == 4 %}★★★★☆
+                        {% elif review.rating == 5 %}★★★★★
+                        {% endif %}
+                        </span>
+                </div>
+                <p class="review-text">{{review.review}}.</p>
             </div>
+            {% endfor %}
+
+            
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <div class="review-form">
+                    {% for form in form %}
+                    {{form}}
+                    <br>
+                    {% endfor %}
+                    <button type="submit" class="submit-review">Submit Review</button>
+                    </div>
+                </form>
+                
+            
         </section>
     </main>
 
