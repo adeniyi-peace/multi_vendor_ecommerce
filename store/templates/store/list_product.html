@@ -7,7 +7,7 @@
 
 {% block contents %}
 
-<section class="all-product">
+<section class="all-product {% if not products %}empty-container {% endif %} ">
 
     {% if products %}
     {% for product in  products %}
@@ -32,7 +32,7 @@
 
     {% else %}
         <div class="empty">
-            <h3>No Products Found</h3>
+            <h3>No Products In This Category Yet</h3>
         </div>
     {% endif %}
 </section>

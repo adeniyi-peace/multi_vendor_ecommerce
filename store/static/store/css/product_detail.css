@@ -208,6 +208,8 @@
 
 
 
+
+/* recently viewed products */
 .recently-viewed {
     padding: 40px 0;
     background-color: #f9f9f9;
@@ -253,6 +255,12 @@
     background-color: white;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+@media only screen and (max-width:768px) {
+    .recently-viewed .carousel-item {
+        width: 35%;
+    }
 }
 
 .recently-viewed .carousel-item a{

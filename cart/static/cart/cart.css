@@ -38,11 +38,27 @@
 .remove-or-add{
     text-align: center;
     display: flex;
+    margin-left: 4rem;
 }
+
+
 
 .remove-or-add div,
 .remove-or-add form{
     width: 50%;
+}
+
+.remove-or-add .remove{
+    background-color: #575757;
+    color: white;
+    padding: .5rem;
+    border-radius: 4px;
+    width: 5rem;
+}
+
+.remove-or-add .remove a{
+    text-decoration: none;
+    color: white;
 }
 
 .remove-or-add input{
@@ -61,21 +77,22 @@
 
 .checkout{
     margin: 2rem auto;
-    width: 20%;
     /* box-shadow: 0 4px 8px black; */
     border-radius: 12px;
     text-align: center;
     padding: 2rem;
 }
 
-.checkout a,
-.remove-or-add a{
+.checkout a{
     text-decoration: none;
     background-color: #575757;
     color: white;
     padding: .5rem;
     border-radius: 4px;
 }
+
+
+
 
 .checkout a:hover,
 .checkout a:active,
@@ -88,4 +105,18 @@
 
 .checkout p{
     margin-bottom: 1rem;
+}
+
+
+@media only screen and (max-width:600px){
+    
+}
+
+
+@media only screen and (min-width:600px)  and (max-width:768px){
+    
+}
+
+@media only screen and (min-width:768px){
+    
 }

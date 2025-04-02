@@ -51,7 +51,6 @@ class UserOrderView(LoginRequiredMixin, View):
     def get(self, request):
         orders = request.user.order.all()
         context = {"orders":orders}
-        print(orders)
         return render(request, "dashboard/orders.html", context)
 
 

@@ -73,3 +73,16 @@
     color: white;
     cursor: pointer;
 }
+
+
+@media screen  and (max-width: 767px) {
+    #login-area{
+        width: 60%
+    }
+}
+
+@media screen  and (max-width: 500px) {
+    #login-area{
+        width: 70%
+    }
+}

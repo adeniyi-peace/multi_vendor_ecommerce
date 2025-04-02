@@ -11,7 +11,7 @@ body {
     width: 90%;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 20px 0;
 }
 
 /* Header */
@@ -118,9 +118,19 @@ header nav ul li a#menuIcon {
 
 /* Media Queries for Responsiveness */
 @media screen and (max-width: 768px) {
-    header nav ul {
-        display: none;
+    header .container{
+        flex-direction: column;
     }
+
+    header .container .logo{
+        text-align: center;
+    }
+
+    header nav ul {
+        gap: 10px;
+    }
+
+    
 
     .sidebar {
         width: 250px;

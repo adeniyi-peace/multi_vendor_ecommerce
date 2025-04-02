@@ -156,13 +156,13 @@ button:hover {
 
 /* Make carousel responsive: show more items on larger screens */
 @media screen and (max-width: 768px) {
-    .carousel-item {
-        flex: 0 0 45%; /* Show 2 items on smaller screens */
+    .featured-products  .carousel-item {
+        flex: 0 0 85%; /* Show 2 items on smaller screens */
     }
 }
 
 @media screen and (max-width: 480px) {
-    .carousel-item {
+    .featured-products  .carousel-item {
         flex: 0 0 90%; /* Show 1 item on extra small screens */
     }
 }
@@ -214,6 +214,12 @@ button:hover {
     background-color: white;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+@media only screen and (max-width:768px) {
+    .recently-viewed .carousel-item {
+        width: 35%;
+    }
 }
 
 .recently-viewed .carousel-item a{

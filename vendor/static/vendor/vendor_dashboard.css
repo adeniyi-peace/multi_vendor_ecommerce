@@ -9,7 +9,7 @@
 .edit-profile,
 .add-product{
     text-align: right;
-    width: 90%;
+    width: 100%;
     margin-top: 2rem;
 }
 
@@ -148,4 +148,10 @@
     padding: .5rem;
     background-color: #9c1818;
     border-radius: 4px;
+}
+
+@media only screen and (max-width:600px){
+    .details-table table{
+        font-size: 0.8rem;
+    }
 }

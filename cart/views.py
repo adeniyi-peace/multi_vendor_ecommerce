@@ -30,7 +30,7 @@ class AddToCartView(View):
         cart.add(id, quantity=quantity)
         
 
-        return redirect(reverse("homepage"))
+        return redirect(reverse("cart"))
 
 
 

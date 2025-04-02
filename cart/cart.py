@@ -15,11 +15,13 @@ class Cart(object):
 
     
     def __iter__(self):
-        for p in self.cart.keys():
-            self.cart[str(p)]["product"] = Product.objects.get(pk=p)
+        for p_id_str, item_data in self.cart.items():
+            p_id = int(p_id_str)
+            product = Product.objects.get(pk=p_id)
 
-        for item in self.cart.values():
-            item["total_price"] = int(item["product"].price) * int(item["quantity"])
+            item = item_data.copy()
+            item["product"] = product
+            item["total_price"] = int(product.price) * int(item["quantity"])
 
             yield item
 
@@ -63,10 +65,17 @@ class Cart(object):
         self.session.modified = True
 
     def get_total_cost(self):
-        for p in  self.cart.keys():
-            self.cart[str(p)]["product"] = Product.objects.get(pk=p)
+        # for p in  self.cart.keys():
+        #     self.cart[str(p)]["product"] = Product.objects.get(pk=p)
 
-        return int(sum(item["product"].price * int(item["quantity"]) for item in self.cart.values()))
+        # return int(sum(item["product"].price * int(item["quantity"]) for item in self.cart.values()))
+
+        total = 0
+        for p_id_str, item in self.cart.items():
+            p_id = int(p_id_str)
+            product = Product.objects.get(pk=p_id)
+            total += int(product.price) * int(item["quantity"])
+        return total
     
     def get_item(self, product_id):
         if str(product_id) in self.cart:
