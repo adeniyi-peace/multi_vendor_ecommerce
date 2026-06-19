@@ -1,2 +1,4 @@
 tbd.txt
 __pycache__
+venv
+.env
