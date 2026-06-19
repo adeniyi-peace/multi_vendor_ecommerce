@@ -24,6 +24,10 @@ DEBUG = env('DEBUG')
 
 ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=['localhost', '127.0.0.1'])
 
+# Render deployment specific configurations
+RENDER_EXTERNAL_HOSTNAME = environ.Env().str('RENDER_EXTERNAL_HOSTNAME', default=None)
+if RENDER_EXTERNAL_HOSTNAME:
+    ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
 
 
 
@@ -83,10 +87,14 @@ WSGI_APPLICATION = 'multi_vendor_ecommerce.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+import os
+RENDER_DISK_PATH = environ.Env().str('RENDER_DISK_PATH', default='')
+db_path = os.path.join(RENDER_DISK_PATH, 'db.sqlite3') if RENDER_DISK_PATH else BASE_DIR / 'db.sqlite3'
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': db_path,
     }
 }
 

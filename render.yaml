@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: multi-vendor-ecommerce
+    env: python
+    buildCommand: "./build.sh"
+    startCommand: "gunicorn multi_vendor_ecommerce.wsgi:application"
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.0
+      - key: SECRET_KEY
+        generateValue: true
+      - key: WEB_CONCURRENCY
+        value: 4
+      - key: RENDER_DISK_PATH
+        value: /data
+    disk:
+      name: sqlite-data
+      mountPath: /data
+      sizeGB: 1
