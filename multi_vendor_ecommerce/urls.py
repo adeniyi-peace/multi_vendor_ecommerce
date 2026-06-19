@@ -27,15 +27,7 @@ urlpatterns = [
     path("dashboard/", include("dashboard.urls")),
     path("vendor/", include("vendor.urls")),
     path("cart/", include("cart.urls")),
+
+    re_path(r"^uploads/(?P<path>.*)$", serve, {"document_root":settings.MEDIA_ROOT}),
     
-]
-
-
-urlpatterns += [
-    re_path(r'^uploads/(?P<path>.*)$', serve, {
-        'document_root': settings.MEDIA_ROOT,
-    }),
-]
-
-if settings.DEBUG:
-    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
