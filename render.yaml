@@ -12,8 +12,4 @@ services:
       - key: WEB_CONCURRENCY
         value: 4
       - key: RENDER_DISK_PATH
-        value: /data
-    disk:
-      name: sqlite-data
-      mountPath: /data
-      sizeGB: 1
+        value: ''
